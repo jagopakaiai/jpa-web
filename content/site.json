@@ -3,12 +3,13 @@
   "fullName": "Center for Interactive Media",
   "institution": "KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH",
   "contactEmail": "cim@kennesaw.edu",
+  "footerCopy": "© 2026 Center for Interactive Media, Kennesaw State University",
   "footerClusters": [
     "GAME STUDIO",
     "DIGITAL TWIN",
     "XR & HEALTHCARE",
-    "IMMERSIVE ED",
-    "DIGITAL HUMANITIES"
-  ],
-  "footerCopy": "© 2026 Center for Interactive Media, Kennesaw State University"
+    "IMMERSIVE EDUCATION",
+    "DIGITAL HUMANITIES & ARTS",
+    "SOCIAL MEDIA & DIGITAL COMMUNITIES"
+  ]
 }
