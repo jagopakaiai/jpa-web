@@ -9,9 +9,12 @@
       "type": "project-list",
       "label": "KSU GAME STUDIO",
       "dotLabel": "KSU Game Studio",
-      "tagline": null,
-      "heroStat": { "value": "23", "unit": "STUDENTS" },
+      "tagline": "",
       "projectsAriaLabel": "KSU Game Studio projects",
+      "heroStat": {
+        "value": "23",
+        "unit": "STUDENTS"
+      },
       "projects": [
         {
           "name": "Project Excelsior",
@@ -33,11 +36,11 @@
     },
     {
       "type": "project-list",
-      "label": "DIGITAL TWIN",
+      "label": "DIGITAL TWIN & SMART ENVIRONMENTS",
       "dotLabel": "Digital Twin",
       "tagline": "Modeling infrastructure, digitally",
-      "heroStat": null,
       "projectsAriaLabel": "Digital Twin projects",
+      "heroStat": null,
       "projects": [
         {
           "name": "Smart Transportation",
@@ -70,8 +73,8 @@
       "label": "XR & HEALTHCARE",
       "dotLabel": "XR & Healthcare",
       "tagline": "Healing through immersion",
-      "heroStat": null,
       "projectsAriaLabel": "XR and healthcare projects",
+      "heroStat": null,
       "projects": [
         {
           "name": "Child Injury Prevention",
@@ -104,8 +107,8 @@
       "label": "IMMERSIVE EDUCATION",
       "dotLabel": "Immersive Education",
       "tagline": "AI meets the classroom",
-      "heroStat": null,
       "projectsAriaLabel": "Immersive education projects",
+      "heroStat": null,
       "projects": [
         {
           "name": "AI Avatar Coaching",
@@ -138,8 +141,8 @@
       "label": "DIGITAL HUMANITIES & ARTS",
       "dotLabel": "Digital Humanities & Arts",
       "tagline": "Technology meets culture",
-      "heroStat": null,
       "projectsAriaLabel": "Digital humanities and arts projects",
+      "heroStat": null,
       "projects": [
         {
           "name": "Playable Archives",
