@@ -37,7 +37,7 @@
     {
       "type": "project-list",
       "label": "DIGITAL TWIN & SMART ENVIRONMENTS",
-      "dotLabel": "Digital Twin",
+      "dotLabel": "Digital Twin & Smart Environments",
       "tagline": "Modeling infrastructure, digitally",
       "projectsAriaLabel": "Digital Twin projects",
       "heroStat": null,
@@ -175,6 +175,24 @@
           "progressLabel": "FUNDING",
           "progressVariant": "default",
           "progressAria": "Seeking funding"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "SOCIAL MEDIA & DIGITAL COMMUNITIES",
+      "dotLabel": "Social Media & Digital Communities",
+      "tagline": "CIM's newest cluster",
+      "projectsAriaLabel": "Social media and digital communities projects",
+      "heroStat": null,
+      "projects": [
+        {
+          "name": "COMING SOON",
+          "tags": "In Progress",
+          "progress": 0,
+          "progressLabel": "LOADING",
+          "progressVariant": "default",
+          "progressAria": "Coming soon"
         }
       ]
     }
