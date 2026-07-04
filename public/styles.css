@@ -1238,10 +1238,10 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   align-items: center;
   gap: var(--space-sm);
   padding: 10px 18px;
-  border: 1px solid var(--border-visible);
+  border: 1px solid var(--text-display);
   border-radius: 999px;
-  background: var(--surface-raised);
-  color: var(--text-display);
+  background: var(--text-display);
+  color: var(--black);
   font-family: 'Space Mono', monospace;
   font-size: var(--label);
   letter-spacing: 0.06em;
@@ -1251,17 +1251,27 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   cursor: pointer;
   align-self: flex-end;
   margin-top: auto;
-  transition: background 180ms var(--ease), color 180ms var(--ease), border-color 180ms var(--ease);
+  transition: opacity 180ms var(--ease);
 }
 .arrow-pill:hover {
+  opacity: 0.85;
+}
+.arrow-pill--accent {
   background: var(--text-display);
   color: var(--black);
   border-color: var(--text-display);
 }
-.arrow-pill--accent { color: var(--accent); border-color: var(--accent); }
-.arrow-pill--accent:hover { background: var(--accent); color: var(--black); border-color: var(--accent); }
-.arrow-pill--interactive { color: var(--interactive); border-color: var(--interactive); }
-.arrow-pill--interactive:hover { background: var(--interactive); color: var(--black); border-color: var(--interactive); }
+.arrow-pill--accent:hover {
+  opacity: 0.85;
+}
+.arrow-pill--interactive {
+  background: var(--text-display);
+  color: var(--black);
+  border-color: var(--text-display);
+}
+.arrow-pill--interactive:hover {
+  opacity: 0.85;
+}
 
 .arrow-pill__arrow {
   font-size: var(--body-sm);
