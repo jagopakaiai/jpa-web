@@ -1,0 +1,27 @@
+<!-- Sidebar Navigation Menu (consistent across all pages except home) -->
+<nav style="display: flex; flex-direction: column; gap: var(--space-sm); width: 100%; margin-top: var(--space-xs);" aria-label="Sidebar Navigation">
+  <a href="/index.html" class="menu-item-link{% if activeMenu == 'home' %} menu-item-link--active{% endif %}">
+    Home
+  </a>
+  <a href="/jpacli.html" class="menu-item-link{% if activeMenu == 'jpacli' %} menu-item-link--active{% endif %}">
+    JPA CLI
+  </a>
+  <a href="/skills.html" class="menu-item-link{% if activeMenu == 'skills' %} menu-item-link--active{% endif %}">
+    Skill
+  </a>
+  <a href="/designs.html" class="menu-item-link{% if activeMenu == 'designs' %} menu-item-link--active{% endif %}">
+    Design
+  </a>
+  <a href="/mcps.html" class="menu-item-link{% if activeMenu == 'mcps' %} menu-item-link--active{% endif %}">
+    MCP
+  </a>
+  <a href="/blog.html" class="menu-item-link{% if activeMenu == 'blog' %} menu-item-link--active{% endif %}">
+    Blog / Artikel
+  </a>
+  <a href="/contact.html" class="menu-item-link{% if activeMenu == 'contact' %} menu-item-link--active{% endif %}">
+    Contact Us
+  </a>
+  <a href="/about.html" class="menu-item-link{% if activeMenu == 'about' %} menu-item-link--active{% endif %}">
+    About Us
+  </a>
+</nav>

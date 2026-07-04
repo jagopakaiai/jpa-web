@@ -1,8 +1,16 @@
 {
-  "label": "KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH",
-  "title": "CIM",
-  "subtitle": "Center for Interactive Media",
-  "description": "49 KSU researchers build games, XR systems, and digital twins.",
-  "ctaText": "START A CONVERSATION",
-  "ctaHref": "mailto:cim@kennesaw.edu"
+  "label": "JAGOPAKAIAI · HUB AI AGENT INDONESIA",
+  "title": "JPA",
+  "subtitle": "JagoPakaiAI",
+  "description": "Hub SKILL.MD, DESIGN.MD & MCP untuk AI Agent Indonesia. Otomatisasi konfigurasi AI Agent dengan 1-click via JPA CLI.",
+  "ctaText": "INSTALL JPA CLI",
+  "ctaHref": "jpacli.html",
+  "stats": [
+    { "value": "50+",   "label": "SKILL.MD" },
+    { "value": "30+",   "label": "DESIGN.MD" },
+    { "value": "20+",   "label": "MCP SERVERS" },
+    { "value": "8+",    "label": "EDITOR" },
+    { "value": "1K+",   "label": "USERS" },
+    { "value": "100%",  "label": "GRATIS" }
+  ]
 }

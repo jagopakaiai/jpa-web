@@ -1,14 +1,14 @@
 {% extends "layout.njk" %}
 
-{% set title = "CIM — Center for Interactive Media · Kennesaw State University" %}
-{% set description = "Kennesaw State University's Center for Interactive Media — Game Studio, Digital Twin, XR Healthcare, Immersive Education, and Digital Humanities research." %}
+{% set title = "JPA — JagoPakaiAI · Hub SKILL.MD, DESIGN.MD & MCP untuk AI Agent Indonesia" %}
+{% set description = "Hub SKILL.MD, DESIGN.MD & MCP untuk AI Agent Indonesia. Otomatisasi konfigurasi AI Agent dengan 1-click via JPA CLI." %}
 
 {% block head %}
   <link rel="stylesheet" href="styles.css">
   <script>
     // Prevent FOUC: apply saved theme before first paint
     (function(){
-      var t=localStorage.getItem('cim-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
     })();
   </script>
 {% endblock %}
@@ -32,20 +32,19 @@
     <!-- FIXED: HERO -->
     {% include "components/hero.njk" %}
 
-    <!-- ROTATING: SPOTLIGHT A — RESEARCH (5 slides) -->
-    {% set spot = "research" %}
-    {% set spotData = spotlights.research %}
+    <!-- ROTATING: SPOTLIGHT A — BLOG SLIDER -->
+    {% set spot = "blog-slider" %}
     {% include "components/spotlight.njk" %}
 
-    <!-- FIXED: LAUNCH EVENT -->
-    {% include "components/launch-event-tile.njk" %}
+    <!-- FIXED: JPA CLI INSTALL TILE -->
+    {% include "components/install-tile.njk" %}
 
-    <!-- ROTATING: SPOTLIGHT B — SHOWCASE (6 slides) -->
+    <!-- ROTATING: SPOTLIGHT B — SHOWCASE -->
     {% set spot = "showcase" %}
     {% set spotData = spotlights.showcase %}
     {% include "components/spotlight.njk" %}
 
-    <!-- ROTATING: TOUCHPOINT (3 slides) -->
+    <!-- ROTATING: TOUCHPOINT -->
     {% set spot = "touchpoint" %}
     {% set spotData = spotlights.touchpoint %}
     {% include "components/spotlight.njk" %}
@@ -53,7 +52,7 @@
   </main>
 
   <!-- Footer -->
-  {% set footerLinks = [{ href: "accessibility.html", label: "ACCESSIBILITY" }] %}
+  {% set footerLinks = [{ href: "jpacli.html", label: "JPA CLI" }, { href: "skills.html", label: "SKILL.MD" }, { href: "blog.html", label: "BLOG" }] %}
   {% include "components/footer.njk" %}
 
   <script>
@@ -63,7 +62,7 @@
       var html = document.documentElement;
       var label = toggle.querySelector('.theme-toggle__label');
 
-      var saved = localStorage.getItem('cim-theme');
+      var saved = localStorage.getItem('jpa-theme');
       if (saved === 'light') {
         html.setAttribute('data-theme', 'light');
         label.textContent = 'LIGHT';
@@ -74,15 +73,8 @@
         var next = current === 'dark' ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         label.textContent = next === 'light' ? 'LIGHT' : 'DARK';
-        localStorage.setItem('cim-theme', next);
+        localStorage.setItem('jpa-theme', next);
       });
-
-      // Post-event state
-      var eventTile = document.querySelector('.tile-event');
-      if (eventTile) {
-        var eventDate = new Date('2026-04-27T23:59:59');
-        if (new Date() > eventDate) eventTile.classList.add('tile-event--past');
-      }
     })();
   </script>
 

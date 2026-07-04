@@ -1,7 +1,7 @@
 {% extends "layout.njk" %}
 
-{% set title = "Accessibility Statement — CIM · Kennesaw State University" %}
-{% set description = "Accessibility Conformance Report and statement for the Center for Interactive Media website at Kennesaw State University." %}
+{% set title = "Accessibility Statement — JPA · JagoPakaiAI" %}
+{% set description = "Accessibility statement for the JagoPakaiAI website — jpa.my.id" %}
 {% set bodyClass = "page-accessibility" %}
 
 {% block head %}
@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="accessibility.css">
   <script>
     // Prevent FOUC: apply saved theme before first paint
-    (function(){var t=localStorage.getItem('cim-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
+    (function(){var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
   </script>
 {% endblock %}
 
@@ -18,7 +18,7 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header class="a11y-header">
-    <a href="index.html" class="a11y-back" aria-label="Back to CIM home">&larr; CIM</a>
+    <a href="index.html" class="a11y-back" aria-label="Back to JPA home">&larr; JPA</a>
   </header>
 
   <main id="main-content" class="a11y-content">
@@ -30,13 +30,13 @@
 
     <section class="a11y-section" aria-labelledby="statement-heading">
       <h2 id="statement-heading" class="section-heading">STATEMENT</h2>
-      <p>The Center for Interactive Media (CIM) at Kennesaw State University is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards to our web presence.</p>
+      <p>The JagoPakaiAI (JPA) project is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply the relevant accessibility standards to our web presence.</p>
       <p>This website strives to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA. These guidelines explain how to make web content more accessible to people with a wide range of disabilities. Complying with these guidelines helps ensure the site is accessible to all people, including those who are blind, have low vision, limited motor abilities, or cognitive limitations.</p>
     </section>
 
     <section class="a11y-section" aria-labelledby="measures-heading">
       <h2 id="measures-heading" class="section-heading">MEASURES</h2>
-      <p>CIM takes the following measures to ensure accessibility of centerforinteractivemedia.com:</p>
+      <p>JPA takes the following measures to ensure accessibility of jpa.my.id:</p>
       <ul>
         <li>Semantic HTML5 with proper heading hierarchy and landmark regions</li>
         <li>ARIA labels on all interactive elements and sections</li>
@@ -55,7 +55,7 @@
       <div class="acr-info">
         <div class="acr-row">
           <span class="acr-label">PRODUCT</span>
-          <span class="acr-value">centerforinteractivemedia.com</span>
+          <span class="acr-value">jpa.my.id</span>
         </div>
         <div class="acr-row">
           <span class="acr-label">REPORT DATE</span>
@@ -121,7 +121,7 @@
             <tr>
               <td>1.4.1 Use of Color</td>
               <td><span class="badge badge-supports">Supports</span></td>
-              <td>The red accent on CIM World tile uses border + text + arrow alongside color. No information conveyed by color alone.</td>
+              <td>The red accent on community tile uses border + text + arrow alongside color. No information conveyed by color alone.</td>
             </tr>
             <tr>
               <td>1.4.2 Audio Control</td>
@@ -413,10 +413,9 @@
 
     <section class="a11y-section" aria-labelledby="feedback-heading">
       <h2 id="feedback-heading" class="section-heading">FEEDBACK</h2>
-      <p>We welcome your feedback on the accessibility of the CIM website. If you encounter accessibility barriers or have suggestions for improvement, please contact us:</p>
+      <p>We welcome your feedback on the accessibility of the JPA website. If you encounter accessibility barriers or have suggestions for improvement, please contact us:</p>
       <ul>
         <li>Email: <a href="mailto:{{ site.contactEmail | h }}">{{ site.contactEmail | h }}</a></li>
-        <li>Phone: (470) 578-6000</li>
       </ul>
       <p>We aim to respond to accessibility feedback within 5 business days.</p>
     </section>
@@ -434,7 +433,7 @@
 
   </main>
 
-  {% set footerLinks = [{ href: "index.html", label: "HOME" }] %}
+  {% set footerLinks = [{ href: "/index.html", label: "HOME" }] %}
   {% include "components/footer.njk" %}
 
 {% endblock %}

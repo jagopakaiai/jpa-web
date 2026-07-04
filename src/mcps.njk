@@ -1,0 +1,116 @@
+{% extends "layout.njk" %}
+
+{% set title = "MCP Directory — JPA · JagoPakaiAI" %}
+{% set description = "Model Context Protocol (MCP) servers directory for AI Agents — browse, select, and integrate tools seamlessly." %}
+
+{% block head %}
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+    })();
+  </script>
+{% endblock %}
+
+{% block body %}
+
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <div class="app-layout" id="main-content">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          MCP Servers
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Model Context Protocol servers untuk AI Agent.
+        </p>
+      </div>
+
+      {% set activeMenu = 'mcps' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Scrollable Bento-tile content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg); background: transparent; border: none;">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">SERVER MCP TERSEDIA</div>
+      <div class="app-layout__scroll">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); padding-right: 4px;">
+          {% for mcp in collections.mcps %}
+            <div class="listing-card">
+              <div class="listing-card__label">{{ mcp.data.category | h }} · {{ mcp.data.protocol | h }}</div>
+              <div class="listing-card__title">{{ mcp.data.title | h }}</div>
+              <div class="listing-card__excerpt">{{ mcp.data.description | h }}</div>
+              <div class="listing-card__meta" style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text-disabled); margin-top: 8px;">
+                v{{ mcp.data.version }} · {{ mcp.data.installs }} installs · by {{ mcp.data.author | h }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Stacked Bento Tiles (Dashboard + JPA CLI install) -->
+    <aside class="app-layout__right" style="display: flex; flex-direction: column; gap: var(--tile-gap, 8px); height: 100%;">
+      <!-- Top Box: Dashboard -->
+      <div class="tile" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-xs); overflow-y: auto;">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">KATEGORI MCP</div>
+        <div style="font-family: 'Doto', monospace; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">02</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-sm);">SERVER MCP</div>
+        
+        <nav class="college-dots" aria-label="MCP Categories">
+          <a href="#" class="college-dots__row" style="cursor: default;" onclick="return false;">
+            <span class="college-dots__label" style="font-size: 11px;">Context7</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">1</span>
+          </a>
+          <a href="#" class="college-dots__row" style="cursor: default;" onclick="return false;">
+            <span class="college-dots__label" style="font-size: 11px;">Seq Thinking</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">1</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Box: JPA CLI install-tile -->
+      <div style="flex: 2; display: flex; flex-direction: column; min-height: 0;">
+        {% include "components/install-tile.njk" %}
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

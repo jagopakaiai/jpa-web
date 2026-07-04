@@ -1,11 +1,108 @@
-<section class="spotlight spotlight--{{ spot }} tile" data-spotlight="{{ spot }}"
-             role="region" aria-roledescription="carousel" aria-label="{{ spotData.label | h }}">
-      <div class="spotlight__stage" aria-live="off">
-{% for slide in spotData.slides %}
-        <article class="slide{% if slide.extraClasses %} {{ slide.extraClasses }}{% endif %}" data-slide-index="{{ loop.index0 }}"{% if loop.first %} data-active{% endif %}>
-{% include "slides/" + slide.type + ".njk" %}
-        </article>
-{% endfor %}
+<section class="spotlight spotlight--{{ spot }} tile" data-spotlight="{{ spot }}" id="{% if spot == 'touchpoint' %}contact{% else %}spot-{{ spot }}{% endif %}"
+             role="region" aria-roledescription="carousel" aria-label="{% if spot == 'blog-slider' %}Blog Posts{% else %}{{ spotData.label | h }}{% endif %}">
+
+  {% if spot == 'blog-slider' %}
+  {# ── BLOG SLIDER ── #}
+
+  <style>
+    .blog-slider__title-link {
+      display: inline-block;
+      text-decoration: none;
+      font-family: 'Doto', 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(24px, 2.5vw, 40px);
+      letter-spacing: -0.01em;
+      color: var(--text-display);
+      border: 1px solid var(--border);
+      padding: 6px 18px;
+      margin-left: -4px;
+      margin-top: -4px;
+      margin-bottom: var(--space-xs);
+      border-radius: 8px;
+      background: transparent;
+      transition: background-color 200ms, color 200ms, border-color 200ms;
+    }
+    .blog-slider__title-link:hover {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      border-color: #ffffff !important;
+    }
+  </style>
+
+  {# ── Static Header (outside stage, never fades/moves) ── #}
+  <div class="blog-slider__header" style="flex-shrink: 0;">
+    <a href="blog.html" class="blog-slider__title-link">
+      Blog / Artikel
+    </a>
+  </div>
+
+  {# ── Rotating Stage (only this part fades between slides) ── #}
+  <div class="spotlight__stage" aria-live="off">
+    {%- for post in collections.blog.slice(0, 5) %}
+      <article class="slide" data-slide-index="{{ loop.index0 }}"{% if loop.first %} data-active{% endif %}>
+        <div class="slide__content" style="height: 100%;">
+
+          {# ── Row 1: Tags with " / " separator (character-roll animation) ── #}
+          <div class="tile-label slide__label" style="text-transform: uppercase;">
+            {%- set filteredTags = [] -%}
+            {%- for tag in post.data.tags -%}
+              {%- if tag != "blog" -%}
+                {%- set filteredTags = (filteredTags.push(tag | upper), filteredTags) -%}
+              {%- endif -%}
+            {%- endfor -%}
+            {{ filteredTags | join(" / ") }}
+          </div>
+
+          {# ── Row 2: Post Title ── #}
+          <div class="slide__body" style="flex: 1; display: flex; flex-direction: column;">
+            <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: var(--heading); font-weight: 500; line-height: 1.3; margin-bottom: var(--space-xs); color: var(--text-display);">
+              {{ post.data.title | h }}
+            </h2>
+
+            {# ── Row 3: Excerpt ── #}
+            <p style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.45; max-width: 60ch;">
+              {{ post.data.excerpt | h }}
+            </p>
+
+            {# ── CTA: pushed to bottom-right ── #}
+            <a href="{{ post.url }}" class="arrow-pill arrow-pill--accent">
+              <span>BACA SELENGKAPNYA</span>
+              <span class="arrow-pill__arrow">→</span>
+            </a>
+          </div>
+
+        </div>
+      </article>
+    {%- endfor %}
+  </div>
+
+  {# ── Controls row with "SEMUA BLOG" link ── #}
+  <div class="spotlight__controls" role="group" aria-label="Blog slides controls" style="display: flex; justify-content: space-between; width: 100%;">
+    <div style="display: flex; align-items: center; gap: var(--space-sm);">
+      <button class="spot-btn spot-btn--prev" type="button" aria-label="Previous blog post">‹</button>
+      <div class="spot-dots" role="tablist" aria-label="Blog posts slides">
+        {%- for post in collections.blog.slice(0, 5) %}
+        <button class="spot-dot" role="tab" aria-selected="{% if loop.first %}true{% else %}false{% endif %}" aria-label="Slide {{ loop.index }} of 5" data-dot="{{ loop.index0 }}"></button>
+        {%- endfor %}
       </div>
-{% include "components/spotlight-controls.njk" %}
-    </section>
+      <button class="spot-btn spot-btn--next" type="button" aria-label="Next blog post">›</button>
+    </div>
+    <a href="blog.html" style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.06em; color: var(--text-secondary); text-decoration: none; text-transform: uppercase;" class="touch-primary">
+      SEMUA BLOG ↗
+    </a>
+  </div>
+
+  {% else %}
+  {# ── STANDARD SPOTLIGHT (showcase, touchpoint, etc.) ── #}
+
+  <div class="spotlight__stage" aria-live="off">
+    {%- for slide in spotData.slides %}
+      <article class="slide{% if slide.extraClasses %} {{ slide.extraClasses }}{% endif %}" data-slide-index="{{ loop.index0 }}"{% if loop.first %} data-active{% endif %}>
+        {% include "slides/" + slide.type + ".njk" %}
+      </article>
+    {%- endfor %}
+  </div>
+  {% include "components/spotlight-controls.njk" %}
+
+  {% endif %}
+</section>

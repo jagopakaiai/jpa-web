@@ -1,0 +1,69 @@
+{
+  "sponsors": [
+    {
+      "name": "Cursor",
+      "href": "https://cursor.com/",
+      "ariaLabel": "Cursor — AI-first code editor",
+      "logoClass": "cursor",
+      "logoImage": null
+    },
+    {
+      "name": "Claude Code",
+      "href": "https://claude.ai/",
+      "ariaLabel": "Claude Code — Anthropic terminal AI agent",
+      "logoClass": "claude",
+      "logoImage": null
+    },
+    {
+      "name": "VS Code",
+      "href": "https://code.visualstudio.com/",
+      "ariaLabel": "VS Code — Microsoft code editor",
+      "logoClass": "vscode",
+      "logoImage": null
+    }
+  ],
+  "partners": [
+    {
+      "name": "Windsurf",
+      "href": "https://codeium.com/windsurf",
+      "ariaLabel": "Windsurf — Codeium AI-powered IDE",
+      "logoClass": "windsurf",
+      "logoImage": null
+    },
+    {
+      "name": "Zed",
+      "href": "https://zed.dev/",
+      "ariaLabel": "Zed — high-performance editor",
+      "logoClass": "zed",
+      "logoImage": null
+    },
+    {
+      "name": "Cline",
+      "href": "https://github.com/cline/cline",
+      "ariaLabel": "Cline — VS Code AI agent extension",
+      "logoClass": "cline",
+      "logoImage": null
+    },
+    {
+      "name": "Continue",
+      "href": "https://continue.dev/",
+      "ariaLabel": "Continue — open source AI code assistant",
+      "logoClass": "continue",
+      "logoImage": null
+    },
+    {
+      "name": "GitHub Copilot",
+      "href": "https://github.com/features/copilot",
+      "ariaLabel": "GitHub Copilot — AI pair programming",
+      "logoClass": "copilot",
+      "logoImage": null
+    },
+    {
+      "name": "Gemini CLI",
+      "href": "https://ai.google.dev/gemini-api",
+      "ariaLabel": "Gemini CLI — Google AI tools",
+      "logoClass": "gemini",
+      "logoImage": null
+    }
+  ]
+}

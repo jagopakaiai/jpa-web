@@ -1,0 +1,109 @@
+{% extends "layout.njk" %}
+
+{% set title = "Blog / Artikel — JPA · JagoPakaiAI" %}
+{% set description = "Artikel, tutorial, dan berita terbaru tentang AI Agent, SKILL.MD, DESIGN.MD, dan MCP dari komunitas JagoPakaiAI." %}
+
+{% block head %}
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+    })();
+  </script>
+{% endblock %}
+
+{% block body %}
+
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <div class="app-layout" id="main-content">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          Blog / Artikel
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Artikel, tutorial, dan berita terbaru dari JagoPakaiAI.
+        </p>
+      </div>
+
+      {% set activeMenu = 'blog' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Scrollable Bento-tile content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg); background: transparent; border: none;">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">POSTINGAN TERBARU</div>
+      <div class="app-layout__scroll">
+        <div style="display: flex; flex-direction: column; gap: var(--space-md); padding-right: 4px;">
+          {% for post in collections.blog %}
+            <a href="{{ post.url }}" class="listing-card">
+              <div class="listing-card__label">
+                {% if post.data.category %}<span style="color: var(--accent); margin-right: 8px;">[{{ post.data.category | h }}]</span>{% endif %}
+                {{ post.data.date | dateFormat }}
+              </div>
+              <div class="listing-card__title">{{ post.data.title | h }}</div>
+              <div class="listing-card__excerpt">{{ post.data.excerpt | h }}</div>
+              {% if post.data.tags %}
+              <div class="listing-card__tags">
+                {% for tag in post.data.tags %}
+                  {% if tag != "blog" %}
+                  <span class="listing-card__tag">#{{ tag | h }}</span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Balancing Bento Panel -->
+    <aside class="tile app-layout__right">
+      <div>
+        <div class="tile-label">ECOSYSTEM</div>
+        <div style="font-family: 'Doto', monospace; font-size: var(--subheading); font-weight: 700; color: var(--text-display); margin-bottom: var(--space-sm);">JAGO PAKAI AI</div>
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.45;">
+          Platform kolaboratif untuk mengoptimalkan efisiensi coding AI Agent di Indonesia dengan direktif (SKILL.MD, DESIGN.MD) dan MCP server terbaik.
+        </p>
+      </div>
+      
+      <div style="border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: var(--space-md);">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">JPA CLI VERSION</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent);">v1.2.2</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

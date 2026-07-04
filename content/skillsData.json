@@ -1,0 +1,123 @@
+{
+  "label": "Daftar SKILL.MD",
+  "total": 50,
+  "totalUnit": "SKILL.MD FILES",
+  "backHref": "index.html",
+  "backLabel": "Kembali ke JPA home",
+  "navAriaLabel": "Navigasi kategori skill",
+
+  "sidebarOrder": ["coding", "devops", "design", "data", "writing", "productivity"],
+
+  "colleges": [
+    {
+      "id": "coding",
+      "title": "CODING & DEVELOPMENT",
+      "sidebarLabel": "CODING",
+      "sidebarAriaLabel": "Coding and development skills — 15 files",
+      "sidebarEmphasis": "interactive",
+      "count": 15,
+      "members": [
+        { "name": "next-js-expert.md",       "dept": "Next.js",       "interest": "Full-stack React framework expert" },
+        { "name": "react-component.md",       "dept": "React",         "interest": "Component architecture & hooks patterns" },
+        { "name": "typescript-strict.md",     "dept": "TypeScript",    "interest": "Strict type-safe development" },
+        { "name": "python-fastapi.md",        "dept": "Python",        "interest": "FastAPI backend development" },
+        { "name": "tailwind-ui.md",           "dept": "TailwindCSS",   "interest": "Utility-first CSS framework" },
+        { "name": "go-microservice.md",       "dept": "Go",            "interest": "Microservice architecture" },
+        { "name": "rust-systems.md",          "dept": "Rust",          "interest": "Systems programming" },
+        { "name": "vue-composition.md",       "dept": "Vue.js",        "interest": "Composition API patterns" },
+        { "name": "svelte-kit.md",            "dept": "SvelteKit",     "interest": "Full-stack Svelte framework" },
+        { "name": "laravel-api.md",           "dept": "Laravel",       "interest": "PHP API development" },
+        { "name": "django-rest.md",           "dept": "Django",        "interest": "REST API with Django" },
+        { "name": "node-express.md",          "dept": "Node.js",       "interest": "Express.js backend patterns" },
+        { "name": "flutter-mobile.md",        "dept": "Flutter",       "interest": "Cross-platform mobile dev" },
+        { "name": "astro-static.md",          "dept": "Astro",         "interest": "Content-driven static sites" },
+        { "name": "nuxt-fullstack.md",        "dept": "Nuxt",          "interest": "Vue full-stack framework" }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DEVOPS & INFRASTRUCTURE",
+      "sidebarLabel": "DEVOPS",
+      "sidebarAriaLabel": "DevOps and infrastructure skills — 8 files",
+      "sidebarEmphasis": null,
+      "count": 8,
+      "members": [
+        { "name": "docker-compose.md",        "dept": "Docker",        "interest": "Container orchestration" },
+        { "name": "kubernetes-deploy.md",      "dept": "Kubernetes",    "interest": "K8s deployment patterns" },
+        { "name": "github-actions.md",         "dept": "CI/CD",         "interest": "GitHub Actions workflows" },
+        { "name": "terraform-infra.md",        "dept": "Terraform",     "interest": "Infrastructure as code" },
+        { "name": "aws-serverless.md",         "dept": "AWS",           "interest": "Lambda & serverless patterns" },
+        { "name": "nginx-config.md",           "dept": "Nginx",         "interest": "Reverse proxy & caching" },
+        { "name": "linux-admin.md",            "dept": "Linux",         "interest": "Server administration" },
+        { "name": "monitoring-stack.md",        "dept": "Observability", "interest": "Prometheus & Grafana stack" }
+      ]
+    },
+    {
+      "id": "design",
+      "title": "UI/UX & DESIGN SYSTEM",
+      "sidebarLabel": "DESIGN",
+      "sidebarAriaLabel": "Design skills — 8 files",
+      "sidebarEmphasis": "accent",
+      "count": 8,
+      "members": [
+        { "name": "figma-to-code.md",          "dept": "Figma",         "interest": "Design to code workflow" },
+        { "name": "design-system.md",          "dept": "System",        "interest": "Component library & tokens" },
+        { "name": "responsive-layout.md",      "dept": "Layout",        "interest": "Mobile-first responsive design" },
+        { "name": "accessibility-a11y.md",     "dept": "A11Y",          "interest": "WCAG 2.1 compliance" },
+        { "name": "animation-motion.md",       "dept": "Motion",        "interest": "Micro-interactions & transitions" },
+        { "name": "dark-mode.md",              "dept": "Theming",       "interest": "Dark/light mode patterns" },
+        { "name": "icon-system.md",            "dept": "Icons",         "interest": "SVG icon management" },
+        { "name": "typography-scale.md",       "dept": "Typography",    "interest": "Fluid type scale system" }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "DATA & AI/ML",
+      "sidebarLabel": "DATA",
+      "sidebarAriaLabel": "Data and AI skills — 7 files",
+      "sidebarEmphasis": null,
+      "count": 7,
+      "members": [
+        { "name": "pandas-analysis.md",        "dept": "Pandas",        "interest": "Data analysis & manipulation" },
+        { "name": "sql-optimization.md",       "dept": "SQL",           "interest": "Query optimization patterns" },
+        { "name": "ml-pipeline.md",            "dept": "ML",            "interest": "Machine learning pipeline" },
+        { "name": "llm-prompt.md",             "dept": "LLM",           "interest": "Prompt engineering patterns" },
+        { "name": "data-viz.md",               "dept": "Visualization", "interest": "Chart & dashboard creation" },
+        { "name": "etl-workflow.md",           "dept": "ETL",           "interest": "Data pipeline orchestration" },
+        { "name": "vector-db.md",              "dept": "VectorDB",      "interest": "Embedding & retrieval" }
+      ]
+    },
+    {
+      "id": "writing",
+      "title": "TECHNICAL WRITING",
+      "sidebarLabel": "WRITING",
+      "sidebarAriaLabel": "Technical writing skills — 5 files",
+      "sidebarEmphasis": null,
+      "count": 5,
+      "members": [
+        { "name": "api-docs.md",               "dept": "API Docs",      "interest": "OpenAPI & endpoint documentation" },
+        { "name": "readme-template.md",        "dept": "README",        "interest": "Project README patterns" },
+        { "name": "changelog-semver.md",       "dept": "Changelog",     "interest": "Semantic versioning changelog" },
+        { "name": "tutorial-guide.md",         "dept": "Tutorial",      "interest": "Step-by-step guide writing" },
+        { "name": "code-comments.md",          "dept": "Comments",      "interest": "JSDoc & inline documentation" }
+      ]
+    },
+    {
+      "id": "productivity",
+      "title": "PRODUCTIVITY & WORKFLOW",
+      "sidebarLabel": "WORKFLOW",
+      "sidebarAriaLabel": "Productivity skills — 7 files",
+      "sidebarEmphasis": null,
+      "count": 7,
+      "members": [
+        { "name": "git-workflow.md",           "dept": "Git",           "interest": "Branching & commit strategy" },
+        { "name": "code-review.md",            "dept": "Review",        "interest": "PR review checklist" },
+        { "name": "testing-tdd.md",            "dept": "Testing",       "interest": "Test-driven development" },
+        { "name": "debugging-expert.md",       "dept": "Debug",         "interest": "Systematic debugging approach" },
+        { "name": "refactoring.md",            "dept": "Refactor",      "interest": "Code refactoring patterns" },
+        { "name": "monorepo-setup.md",         "dept": "Monorepo",      "interest": "Turborepo & workspace setup" },
+        { "name": "performance-audit.md",      "dept": "Performance",   "interest": "Lighthouse & web vitals" }
+      ]
+    }
+  ]
+}

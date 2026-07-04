@@ -1,0 +1,174 @@
+{% extends "layout.njk" %}
+
+{% set title = "About Us — JPA · JagoPakaiAI" %}
+{% set description = "Tentang JagoPakaiAI, misi kami untuk mempercepat adopsi AI Agent di Indonesia, serta visi kolaboratif di era Vibe Coding." %}
+
+{% block head %}
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+      var z=localStorage.getItem('jpa-zoom')||'medium';document.documentElement.setAttribute('data-zoom',z);
+    })();
+  </script>
+{% endblock %}
+
+{% block body %}
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Page-level theme switch toggle toolbar -->
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <!-- Standard layout container -->
+  <div id="main-content" class="app-layout">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          ABOUT US
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Tentang JagoPakaiAI & AI Agent Hub Indonesia.
+        </p>
+      </div>
+
+      {% set activeMenu = 'about' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): About Us Bento Content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg); display: flex; flex-direction: column;">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">MISI & VISI EKOSISTEM KAMI</div>
+      <div class="app-layout__scroll" style="flex: 1; overflow-y: auto;">
+        <div style="padding-right: var(--space-sm); display: flex; flex-direction: column; gap: var(--space-lg);">
+          
+          <!-- Vibe Coding Intro Card -->
+          <div class="listing-card" style="margin: 0; cursor: default;">
+            <div class="listing-card__label">FILOSOFI KAMI</div>
+            <div class="listing-card__title" style="font-size: clamp(18px, 1.8vw, 24px); font-weight: 600; color: var(--accent); margin-bottom: var(--space-sm);">
+              Era Vibe Coding & Kolaborasi Agen Otonom
+            </div>
+            <p class="listing-card__excerpt" style="font-size: var(--body); color: var(--text-primary); line-height: 1.6; margin: 0;">
+              JagoPakaiAI (JPA) didirikan dengan satu filosofi sederhana: **memberdayakan developer dan AI Agent untuk bekerja dalam harmoni sempurna**. Di era baru yang disebut *Vibe Coding*, keahlian developer bergeser dari sekadar mengetik sintaksis mentah menjadi sutradara arsitektur cerdas yang mengorkestrasikan sekumpulan AI Agent otonom.
+            </p>
+          </div>
+
+          <!-- Mission Card -->
+          <div class="listing-card" style="margin: 0; cursor: default;">
+            <div class="listing-card__label">MISI UTAMA</div>
+            <div class="listing-card__title" style="font-size: clamp(18px, 1.8vw, 24px); font-weight: 600; color: var(--text-display); margin-bottom: var(--space-sm);">
+              Mempercepat Standardisasi AI Agent di Indonesia
+            </div>
+            <p class="listing-card__excerpt" style="font-size: var(--body); color: var(--text-primary); line-height: 1.6; margin-bottom: var(--space-sm);">
+              Untuk mempercepat adopsi AI Agent, dibutuhkan standarisasi instruksi (SKILL.MD), panduan desain (DESIGN.MD), dan integrasi tool API (MCP). Misi kami adalah:
+            </p>
+            <ul style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.6; padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: var(--space-xs);">
+              <li>Menyediakan basis data direktif **SKILL.MD** terlengkap untuk editor modern.</li>
+              <li>Menyediakan template UI **DESIGN.MD** yang siap pakai untuk mempercepat layouting.</li>
+              <li>Menghubungkan ekosistem API lokal dan global melalui protokol **Model Context Protocol (MCP)**.</li>
+              <li>Otomatisasi seluruh alur kerja menggunakan utility tangguh **JPA CLI**.</li>
+            </ul>
+          </div>
+
+          <!-- Core Values -->
+          <div class="listing-card" style="margin: 0; cursor: default;">
+            <div class="listing-card__label">NILAI UTAMA</div>
+            <div class="listing-card__title" style="font-size: clamp(18px, 1.8vw, 24px); font-weight: 600; color: var(--text-display); margin-bottom: var(--space-sm);">
+              3 Pilar Utama JagoPakaiAI
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-md); margin-top: var(--space-xs);">
+              <div>
+                <h4 style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent); margin-bottom: var(--space-xs);">01. STANDARISASI</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                  Setiap direktif diverifikasi secara ketat agar AI Agent beroperasi secara aman dan terprediksi tanpa error.
+                </p>
+              </div>
+              <div>
+                <h4 style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent); margin-bottom: var(--space-xs);">02. KOLABORATIF</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                  Dibangun oleh komunitas AI engineer Indonesia untuk kemajuan kapabilitas rekayasa perangkat lunak tanah air.
+                </p>
+              </div>
+              <div>
+                <h4 style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent); margin-bottom: var(--space-xs);">03. OTOMATISASI</h4>
+                <p style="font-family: 'Space Grotesk', sans-serif; font-size: 13px; color: var(--text-secondary); line-height: 1.5; margin: 0;">
+                  Menghilangkan setup manual berulang dengan integrasi sekali klik via JPA CLI global.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Stacked Bento Tiles (Dashboard 1/3 + JPA CLI 2/3) -->
+    <aside class="app-layout__right" style="display: flex; flex-direction: column; gap: var(--tile-gap, 8px); height: 100%;">
+      <!-- Top Box: Dashboard (1/3 height) -->
+      <div class="tile" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-xs); overflow-y: auto;">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">STATISTIK KOMUNITAS</div>
+        <div style="font-family: 'Doto', monospace; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">03</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-sm);">PILAR UTAMA</div>
+        
+        <nav class="college-dots" aria-label="Community Statistics">
+          <a href="#" class="college-dots__row" style="cursor: default;" onclick="return false;">
+            <span class="college-dots__label" style="font-size: 11px;">Standarisasi</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">1</span>
+          </a>
+          <a href="#" class="college-dots__row" style="cursor: default;" onclick="return false;">
+            <span class="college-dots__label" style="font-size: 11px;">Kolaboratif</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">1</span>
+          </a>
+          <a href="#" class="college-dots__row" style="cursor: default;" onclick="return false;">
+            <span class="college-dots__label" style="font-size: 11px;">Otomatisasi</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">1</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Box: JPA CLI install-tile (2/3 height) -->
+      <div style="flex: 2; display: flex; flex-direction: column; min-height: 0;">
+        {% include "components/install-tile.njk" %}
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

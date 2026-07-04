@@ -1,63 +1,68 @@
-# cim-site-3
+# JPA — JagoPakaiAI
 
-Marketing site for the **Center for Interactive Media (CIM)** at Kennesaw
-State University. Built with [Eleventy](https://www.11ty.dev/) and
-edited via [Sveltia CMS](https://github.com/sveltia/sveltia-cms) at
-`/admin/`.
+Hub SKILL.MD, DESIGN.MD & MCP untuk AI Agent Indonesia.
 
-## Quick start
+**Website**: [jpa.my.id](https://jpa.my.id)
+
+## Stack
+
+- **Static Site Generator**: [Eleventy (11ty)](https://www.11ty.dev/)
+- **Headless CMS**: [Sveltia CMS](https://github.com/sveltia/sveltia-cms)
+- **Hosting**: [Netlify](https://www.netlify.com/) (Free tier)
+- **Auth**: GitHub OAuth via Netlify Functions
+
+## Development
 
 ```bash
+# Install dependencies
 npm install
-npm run dev      # → http://localhost:8080 with live reload
-npm run build    # → _site/ (what Vercel serves)
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
 ```
 
-## How it works
-
-- **Pages** live in `src/*.njk` (Nunjucks templates).
-- **Content** lives in `content/*.json` (and `content/spotlights/*.json`).
-  Editing a JSON file regenerates the matching HTML on the next build.
-- **Shared layout** is in `_includes/layout.njk`; reusable components in
-  `_includes/components/`; spotlight slide variants in `_includes/slides/`.
-- **Static assets** (CSS, JS, partner logos) live in `public/` and are
-  passthrough-copied to the site root by Eleventy.
-- **Hosting:** Vercel auto-deploys every push to `main`.
-- **Admin:** Sveltia CMS at `/admin/` lets content owners edit the JSON
-  files via a web UI. Sign-in uses GitHub OAuth; only repo collaborators
-  can save changes.
-
-## CMS setup (one-time)
-
-See [`docs/cms-setup-guide.md`](docs/cms-setup-guide.md) for the
-GitHub OAuth App registration and Vercel env var setup. Until those are
-done, `/admin/` won't be able to authenticate.
-
-## Architecture spec
-
-See [`docs/superpowers/specs/2026-04-28-cms-sveltia-eleventy-design.md`](docs/superpowers/specs/2026-04-28-cms-sveltia-eleventy-design.md)
-for the full design rationale (data schema, variant slides, build
-pipeline, OAuth flow).
-
-## What's editable via the CMS
-
-- Site settings (institution, footer, contact email)
-- Homepage hero
-- Three spotlight carousels (research, showcase, touchpoint) — 16 slides total across 8 variants
-- Sponsors & partners (single source of truth for both spotlight grids)
-- Faculty (49 entries across 6 colleges)
-- Launch event (homepage tile + full event landing page)
-
-The accessibility statement page (`accessibility.html`) is currently
-**developer-edited** because of its heavily-styled prose. To update,
-edit `src/accessibility.njk` and open a PR.
-
-## Deploy flow
+## Content Structure
 
 ```
-editor saves in /admin/
-   → Sveltia commits content/<file>.json on main (via GitHub API)
-   → Vercel webhook triggers `npm run build`
-   → Eleventy regenerates HTML from JSON + templates
-   → live site updated (~30s end-to-end)
+content/
+├── site.json                    # Global site settings
+├── hero.json                    # Homepage hero content
+├── jpacli.json                  # JPA CLI page content
+├── ecosystem.json               # Editor & tools ecosystem
+├── skills-data.json             # SKILL.MD directory data
+├── blog/                        # Blog posts (markdown)
+├── designs/                     # DESIGN.MD entries (markdown)
+├── mcps/                        # MCP server entries (markdown)
+└── spotlights/
+    ├── jpacli-features.json     # JPA CLI features carousel
+    ├── showcase.json            # Showcase carousel (stats, ecosystem)
+    └── touchpoint.json          # Contact info carousel
 ```
+
+## Admin CMS
+
+Access the admin panel at `/admin`. The CMS has 6 sections:
+
+1. **Home** — Landing page settings (hero, site global)
+2. **JPA CLI** — JPA CLI application content
+3. **Blog** — Blog articles and tutorials
+4. **Skill** — SKILL.MD file listings
+5. **Design** — DESIGN.MD template listings
+6. **MCP** — MCP server listings
+
+## Environment Variables (Netlify)
+
+Set these in Netlify dashboard > Site settings > Environment variables:
+
+```
+GITHUB_OAUTH_CLIENT_ID=<your-github-oauth-client-id>
+GITHUB_OAUTH_CLIENT_SECRET=<your-github-oauth-client-secret>
+SITE_URL=https://jpa.my.id
+```
+
+## License
+
+MIT

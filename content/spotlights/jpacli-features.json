@@ -1,0 +1,199 @@
+{
+  "label": "JPA CLI Features spotlight",
+  "controlsLabel": "JPA CLI features controls",
+  "prevLabel": "Previous feature slide",
+  "nextLabel": "Next feature slide",
+  "dotsLabel": "Feature slides",
+  "slides": [
+    {
+      "type": "project-list",
+      "label": "INSTALASI & SETUP",
+      "dotLabel": "Instalasi & Setup",
+      "tagline": "Mulai dalam hitungan detik",
+      "projectsAriaLabel": "Installation options",
+      "heroStat": {
+        "value": "4",
+        "unit": "METODE INSTALL"
+      },
+      "projects": [
+        {
+          "name": "npm install -g @jagopakaiai/jpa-cli",
+          "tags": "Node.js · Global Install",
+          "progress": 100,
+          "progressLabel": "READY",
+          "progressVariant": "success",
+          "progressAria": "Ready to use"
+        },
+        {
+          "name": "curl -fsSL jpa.my.id/install.sh | sh",
+          "tags": "Universal · Shell Script",
+          "progress": 100,
+          "progressLabel": "READY",
+          "progressVariant": "success",
+          "progressAria": "Ready to use"
+        },
+        {
+          "name": "bun add -g @jagopakaiai/jpa-cli",
+          "tags": "Bun · Fast Install",
+          "progress": 100,
+          "progressLabel": "READY",
+          "progressVariant": "success",
+          "progressAria": "Ready to use"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "AUTO-DETECT WORKSPACE",
+      "dotLabel": "Auto-Detect",
+      "tagline": "Zero konfigurasi manual",
+      "projectsAriaLabel": "Supported editors",
+      "heroStat": null,
+      "projects": [
+        {
+          "name": "Cursor Detection",
+          "tags": "AI-First · .cursor/rules/",
+          "progress": 100,
+          "progressLabel": "SUPPORTED",
+          "progressVariant": "success",
+          "progressAria": "Fully supported"
+        },
+        {
+          "name": "VS Code + Copilot",
+          "tags": ".github/copilot-instructions.md",
+          "progress": 100,
+          "progressLabel": "SUPPORTED",
+          "progressVariant": "success",
+          "progressAria": "Fully supported"
+        },
+        {
+          "name": "Claude Code",
+          "tags": "CLAUDE.md · Terminal Agent",
+          "progress": 100,
+          "progressLabel": "SUPPORTED",
+          "progressVariant": "success",
+          "progressAria": "Fully supported"
+        },
+        {
+          "name": "Windsurf & Zed",
+          "tags": ".windsurfrules · .zed/",
+          "progress": 80,
+          "progressLabel": "BETA",
+          "progressVariant": "warning",
+          "progressAria": "Beta support"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "SYNC SKILL.MD",
+      "dotLabel": "Sync SKILL.MD",
+      "tagline": "Direktif AI Agent, otomatis",
+      "projectsAriaLabel": "Sync features",
+      "heroStat": {
+        "value": "50+",
+        "unit": "SKILL FILES"
+      },
+      "projects": [
+        {
+          "name": "Browse Library",
+          "tags": "50+ Skills · Community Curated",
+          "progress": 100,
+          "progressLabel": "LIVE",
+          "progressVariant": "success",
+          "progressAria": "Live"
+        },
+        {
+          "name": "1-Click Install",
+          "tags": "jpa-cli sync next-js-expert",
+          "progress": 100,
+          "progressLabel": "ACTIVE",
+          "progressVariant": "active",
+          "progressAria": "Active"
+        },
+        {
+          "name": "Custom Upload",
+          "tags": "Daftar & Bagikan Skill.md Anda",
+          "progress": 60,
+          "progressLabel": "BETA",
+          "progressVariant": "warning",
+          "progressAria": "Beta"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "SYNC DESIGN.MD",
+      "dotLabel": "Sync DESIGN.MD",
+      "tagline": "Panduan desain untuk AI",
+      "projectsAriaLabel": "Design sync features",
+      "heroStat": {
+        "value": "30+",
+        "unit": "DESIGN FILES"
+      },
+      "projects": [
+        {
+          "name": "Design System Templates",
+          "tags": "Component · Token · Pattern",
+          "progress": 100,
+          "progressLabel": "LIVE",
+          "progressVariant": "success",
+          "progressAria": "Live"
+        },
+        {
+          "name": "Framework-Specific",
+          "tags": "Tailwind · MUI · Chakra · Shadcn",
+          "progress": 80,
+          "progressLabel": "ACTIVE",
+          "progressVariant": "active",
+          "progressAria": "Active"
+        },
+        {
+          "name": "Brand Guidelines",
+          "tags": "Logo · Color · Typography Rules",
+          "progress": 40,
+          "progressLabel": "COMING",
+          "progressVariant": "default",
+          "progressAria": "Coming soon"
+        }
+      ]
+    },
+    {
+      "type": "project-list",
+      "label": "MCP MANAGEMENT",
+      "dotLabel": "MCP Management",
+      "tagline": "Model Context Protocol hub",
+      "projectsAriaLabel": "MCP features",
+      "heroStat": {
+        "value": "20+",
+        "unit": "MCP SERVERS"
+      },
+      "projects": [
+        {
+          "name": "Browse MCP Servers",
+          "tags": "Database · API · Search · Tools",
+          "progress": 100,
+          "progressLabel": "LIVE",
+          "progressVariant": "success",
+          "progressAria": "Live"
+        },
+        {
+          "name": "Auto-Configure",
+          "tags": "jpa-cli mcp",
+          "progress": 80,
+          "progressLabel": "ACTIVE",
+          "progressVariant": "active",
+          "progressAria": "Active"
+        },
+        {
+          "name": "MCP Registry Submit",
+          "tags": "Daftarkan MCP Server Anda",
+          "progress": 30,
+          "progressLabel": "PLANNING",
+          "progressVariant": "default",
+          "progressAria": "Planning"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+{% extends "layout.njk" %}
+
+{% set title = "Contact Us — JPA · JagoPakaiAI" %}
+{% set description = "Hubungi tim JagoPakaiAI untuk feedback, kontribusi direktif, partnership, atau pertanyaan umum seputar ekosistem AI Agent." %}
+
+{% block head %}
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+      var z=localStorage.getItem('jpa-zoom')||'medium';document.documentElement.setAttribute('data-zoom',z);
+    })();
+  </script>
+  <style>
+    /* Premium Cyber Input Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      width: 100%;
+      margin-top: var(--space-xs);
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+    .form-label {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--caption);
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .form-input, .form-textarea {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-primary);
+      transition: all 150ms var(--ease);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .form-input:hover, .form-textarea:hover {
+      border-color: var(--border-visible);
+      background: var(--surface);
+    }
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent);
+      background: var(--surface);
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 68, 68, 0.15);
+    }
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+  </style>
+{% endblock %}
+
+{% block body %}
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Page-level theme switch toggle toolbar -->
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <!-- Standard layout container -->
+  <div id="main-content" class="app-layout">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          CONTACT US
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Kirim pesan ke tim dan komunitas JagoPakaiAI.
+        </p>
+      </div>
+
+      {% set activeMenu = 'contact' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Contact Us Bento Content & Form -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg); display: flex; flex-direction: column;">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">FORMULIR HUBUNGI KAMI</div>
+      <div class="app-layout__scroll" style="flex: 1; overflow-y: auto;">
+        <div style="padding-right: var(--space-sm); display: flex; flex-direction: column; gap: var(--space-lg);">
+          
+          <div class="listing-card" style="margin: 0; cursor: default;">
+            <p class="listing-card__excerpt" style="font-size: var(--body-sm); color: var(--text-primary); line-height: 1.5; margin: 0;">
+              Punya ide direktif SKILL.MD baru? Ingin mengajukan server MCP atau memberikan feedback pada JPA CLI? Isi form di bawah ini dan tim kami akan segera menghubungi Anda.
+            </p>
+          </div>
+
+          <!-- Contact Form Container -->
+          <div class="listing-card" style="margin: 0; cursor: default; padding: var(--space-md);">
+            <form class="contact-form" action="#" method="POST" onsubmit="alert('Terima kasih! Pesan Anda telah terkirim.'); return false;">
+              <div class="form-group">
+                <label class="form-label" for="form-name">Nama Lengkap</label>
+                <input class="form-input" type="text" id="form-name" name="name" required placeholder="Nama Anda...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-email">Alamat Email</label>
+                <input class="form-input" type="email" id="form-email" name="email" required placeholder="name@domain.com">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-subject">Subjek Pesan</label>
+                <input class="form-input" type="text" id="form-subject" name="subject" required placeholder="Feedback / Kontribusi / Kerja sama...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="form-message">Pesan Anda</label>
+                <textarea class="form-textarea" id="form-message" name="message" required placeholder="Tuliskan detail pesan Anda di sini..."></textarea>
+              </div>
+
+              <button class="arrow-pill arrow-pill--accent" type="submit" style="align-self: flex-start; margin-top: var(--space-xs); border-radius: 999px;">
+                <span>Kirim Pesan</span>
+                <span class="arrow-pill__arrow">→</span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Stacked Bento Tiles (Dashboard 1/3 + JPA CLI 2/3) -->
+    <aside class="app-layout__right" style="display: flex; flex-direction: column; gap: var(--tile-gap, 8px); height: 100%;">
+      <!-- Top Box: Dashboard (1/3 height) -->
+      <div class="tile" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-xs); overflow-y: auto;">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">SALURAN KOMUNIKASI</div>
+        <div style="font-family: 'Doto', monospace; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">03</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-sm);">CHANNEL UTAMA</div>
+        
+        <nav class="college-dots" aria-label="Communication Channels">
+          <a href="mailto:halo@jagopakai.id" class="college-dots__row" style="cursor: pointer;">
+            <span class="college-dots__label" style="font-size: 11px;">Email</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">Go</span>
+          </a>
+          <a href="https://discord.gg" class="college-dots__row" style="cursor: pointer;" target="_blank" rel="noopener">
+            <span class="college-dots__label" style="font-size: 11px;">Discord</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">Join</span>
+          </a>
+          <a href="https://github.com/jagopakaiai" class="college-dots__row" style="cursor: pointer;" target="_blank" rel="noopener">
+            <span class="college-dots__label" style="font-size: 11px;">GitHub</span>
+            <span class="college-dots__grid" aria-hidden="true">
+              <span class="dot"></span>
+            </span>
+            <span class="college-dots__count" style="font-size: 11px;">Contr</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Bottom Box: JPA CLI install-tile (2/3 height) -->
+      <div style="flex: 2; display: flex; flex-direction: column; min-height: 0;">
+        {% include "components/install-tile.njk" %}
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

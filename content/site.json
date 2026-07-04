@@ -1,14 +1,14 @@
 {
-  "siteName": "CIM",
-  "institution": "KENNESAW STATE UNIVERSITY · OFFICE OF RESEARCH",
-  "contactEmail": "cim@kennesaw.edu",
-  "footerCopy": "© 2026 Center for Interactive Media, Kennesaw State University",
+  "siteName": "JPA",
+  "institution": "JAGOPAKAIAI · HUB AI AGENT INDONESIA",
+  "contactEmail": "hi@jpa.my.id",
+  "footerCopy": "© 2026 JagoPakaiAI — jpa.my.id",
   "footerClusters": [
-    "KSU GAME STUDIO",
-    "DIGITAL TWIN & SMART ENVIRONMENTS",
-    "XR & HEALTHCARE",
-    "IMMERSIVE EDUCATION",
-    "DIGITAL HUMANITIES & ARTS",
-    "SOCIAL MEDIA & DIGITAL COMMUNITIES"
+    "SKILL.MD",
+    "DESIGN.MD",
+    "MCP",
+    "JPA CLI",
+    "COMMUNITY",
+    "OPEN SOURCE"
   ]
 }

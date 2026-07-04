@@ -1,0 +1,278 @@
+{% extends "layout.njk" %}
+
+{% set title = "JPA CLI — JagoPakaiAI Command Line Interface" %}
+{% set description = "JPA CLI — tool CLI untuk mengelola SKILL.MD, DESIGN.MD, dan MCP untuk AI Agent. Install, sync, dan kelola konfigurasi AI Agent dari terminal." %}
+
+{% block head %}
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+    })();
+  </script>
+  <style>
+    /* Custom styling for JPA CLI Program sections */
+    .program-section {
+      margin-bottom: var(--space-xl);
+    }
+    .program-section__title {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-xs);
+    }
+    .agenda-item {
+      display: flex;
+      gap: var(--space-md);
+      padding: var(--space-md) 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .agenda-item__time {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--body-sm);
+      color: var(--text-disabled);
+      width: 80px;
+      flex-shrink: 0;
+    }
+    .agenda-item__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+    .agenda-item__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      font-weight: 500;
+      color: var(--text-display);
+    }
+    .agenda-item__desc {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--caption);
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .agenda-item__speaker {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--text-disabled);
+      margin-top: 4px;
+    }
+    
+    .guest-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .guest {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-xs);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+    }
+    .guest__name {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .guest__org {
+      color: var(--text-disabled);
+    }
+    
+    .sponsor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--space-sm);
+    }
+    .sponsor-item {
+      background: var(--surface-raised);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: var(--space-sm);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+    .sponsor-item__name {
+      font-family: 'Space Mono', monospace;
+      font-size: var(--body-sm);
+      font-weight: 700;
+      color: var(--text-display);
+    }
+    .sponsor-item__role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10px;
+      color: var(--text-disabled);
+    }
+    
+    /* Right column details */
+    .cli-meta-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .cli-meta-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: var(--space-xs);
+    }
+    .cli-meta-label {
+      color: var(--text-disabled);
+      font-family: 'Space Mono', monospace;
+      font-size: var(--label);
+    }
+    .cli-meta-value {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  {% set ev = jpacli.page %}
+  {% set chipStyle = "font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-secondary); padding: 3px 8px; border: 1px solid var(--border-visible); border-radius: 999px; text-transform: uppercase;" %}
+
+  <div class="app-layout" id="main-content">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          JPA CLI
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Tool CLI untuk mengelola SKILL.MD, DESIGN.MD, dan MCP AI Agent.
+        </p>
+      </div>
+
+      {% set activeMenu = 'jpacli' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Scrollable Bento-tile content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg);">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">PROGRAM & FITUR UTAMA</div>
+      <div class="app-layout__scroll">
+        <div style="padding-right: var(--space-sm);">
+          
+          <div class="program-section">
+            <div class="program-section__title">FITUR</div>
+            {%- for item in ev.program %}
+              <div class="agenda-item">
+                <span class="agenda-item__time">{{ item.time | h }}</span>
+                <div class="agenda-item__content">
+                  <span class="agenda-item__title">{{ item.title | h }}</span>
+                  <span class="agenda-item__desc">{{ item.description | h }}</span>
+                  <span class="agenda-item__speaker">{{ item.speaker | h }}</span>
+                </div>
+              </div>
+            {%- endfor %}
+          </div>
+
+          <div class="program-section">
+            <div class="program-section__title">EDITOR & AI AGENT YANG DIDUKUNG</div>
+            <div class="guest-list">
+              {%- for guest in ev.featured %}
+                <div class="guest">
+                  <span class="guest__name">{{ guest.name | h }}</span>
+                  <span class="guest__org">{{ guest.org | h }}</span>
+                </div>
+              {%- endfor %}
+            </div>
+          </div>
+
+          <div class="program-section">
+            <div class="program-section__title">KOMPONEN EKOSISTEM</div>
+            <div class="sponsor-grid">
+              {%- for s in ev.sponsors %}
+                <div class="sponsor-item">
+                  <span class="sponsor-item__name">{{ s.name | h }}</span>
+                  <span class="sponsor-item__role">{{ s.role | h }}</span>
+                </div>
+              {%- endfor %}
+            </div>
+          </div>
+
+          <div class="program-section">
+            <div class="program-section__title">KOMPATIBILITAS</div>
+            <div class="guest-list" style="flex-direction: row; flex-wrap: wrap; gap: 8px;">
+              {%- for org in ev.organizations %}
+                <span style="{{ chipStyle }}">{{ org | h }}</span>
+              {%- endfor %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Balancing Bento Panel -->
+    <aside class="tile app-layout__right">
+      <div>
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">RILIS TERBARU</div>
+        <div style="font-family: 'Doto', monospace; font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">{{ ev.date | h }}</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-md);">TAHUN RILIS: {{ ev.year | h }}</div>
+        
+        <div class="cli-meta-info">
+          {%- for row in ev.info %}
+            <div class="cli-meta-row">
+              <span class="cli-meta-label">{{ row.label | h }}</span>
+              <span class="cli-meta-value">{{ row.value | h }}</span>
+            </div>
+          {%- endfor %}
+        </div>
+
+        <a href="{{ ev.cta.href }}" target="_blank" rel="noopener noreferrer" class="arrow-pill arrow-pill--{{ ev.cta.variant }}" style="width: 100%; display: flex; justify-content: space-between; align-items: center; padding: var(--space-md); border-radius: 8px;">
+          <span>{{ ev.cta.text | h }}</span>
+          <span class="arrow-pill__arrow" style="transition: transform 150ms;">→</span>
+        </a>
+      </div>
+      
+      <div style="border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: var(--space-md);">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">JPA CLI VERSION</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent);">v1.2.2</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

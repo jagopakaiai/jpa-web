@@ -1,0 +1,91 @@
+{
+  "tile": {
+    "label": "DOWNLOAD",
+    "ariaLabel": "JPA CLI — Install JagoPakaiAI CLI",
+    "href": "jpacli.html",
+    "date": "v1.2.2",
+    "details": ["npm install -g @jagopakaiai/jpa-cli", "curl -fsSL jpa.my.id/install.sh | sh", "brew install jpa-cli"],
+    "sponsors": "CURSOR · CLAUDE CODE · VS CODE",
+    "ctaText": "LIHAT SELENGKAPNYA"
+  },
+  "page": {
+    "label": "JPA CLI — JAGOPAKAIAI CLI",
+    "backHref": "index.html",
+    "backLabel": "Kembali ke JPA home",
+    "date": "JPA",
+    "year": "CLI",
+    "info": [
+      { "label": "VERSI",   "value": "v1.2.2 — Stable Release" },
+      { "label": "INSTALL", "value": "npm install -g @jagopakaiai/jpa-cli" },
+      { "label": "LISENSI", "value": "MIT — Open Source" },
+      { "label": "UKURAN",  "value": "< 5 MB · Zero dependencies" }
+    ],
+    "cta": {
+      "text": "INSTALL SEKARANG",
+      "href": "https://github.com/jagopakaiai/jpa-cli",
+      "variant": "accent"
+    },
+    "program": [
+      {
+        "time": "01",
+        "title": "Instalasi Instan",
+        "description": "Install JPA CLI secara global via npm, curl, bun, atau brew. Satu perintah, langsung aktif di semua project.",
+        "speaker": "NPM · CURL · BUN · BREW"
+      },
+      {
+        "time": "02",
+        "title": "Deteksi Workspace Otomatis",
+        "description": "JPA CLI mendeteksi editor dan AI agent workspace secara otomatis — Cursor, VS Code, Windsurf, Zed, dan lainnya.",
+        "speaker": "AUTO-DETECT · ZERO CONFIG"
+      },
+      {
+        "time": "03",
+        "title": "Sinkronisasi SKILL.MD & DESIGN.MD",
+        "description": "Sinkronkan file direktif AI Agent tanpa copy-paste manual. Pilih dari library atau buat sendiri, langsung sync ke workspace.",
+        "speaker": "1-CLICK SYNC · TANPA COPY PASTE"
+      },
+      {
+        "time": "04",
+        "title": "MCP Server Management",
+        "description": "Kelola konfigurasi MCP (Model Context Protocol) server langsung dari CLI. Browse, install, dan aktifkan MCP servers.",
+        "speaker": "BROWSE · INSTALL · ACTIVATE"
+      },
+      {
+        "time": "05",
+        "title": "1-Click Code Cloner",
+        "description": "Install preset konfigurasi langsung ke workspace lokal tanpa konfigurasi manual. Template siap pakai untuk berbagai framework.",
+        "speaker": "PRESET · TEMPLATE · CLONE"
+      },
+      {
+        "time": "06",
+        "title": "Community Sharing",
+        "description": "Daftarkan dan bagikan SKILL.MD, DESIGN.MD, serta MCP konfigurasi ke komunitas JagoPakaiAI. Open dan gratis.",
+        "speaker": "OPEN PLATFORM · COMMUNITY DRIVEN"
+      }
+    ],
+    "featured": [
+      { "name": "Cursor",             "org": "AI-FIRST CODE EDITOR" },
+      { "name": "VS Code + Copilot",  "org": "MICROSOFT · AI PAIR PROGRAMMING" },
+      { "name": "Claude Code",        "org": "ANTHROPIC · TERMINAL AI AGENT" },
+      { "name": "Windsurf",           "org": "CODEIUM · AI-POWERED IDE" },
+      { "name": "Zed",                "org": "HIGH-PERFORMANCE EDITOR" },
+      { "name": "Cline",              "org": "VS CODE EXTENSION · AI AGENT" },
+      { "name": "Continue",           "org": "OPEN SOURCE AI CODE ASSISTANT" }
+    ],
+    "sponsors": [
+      { "name": "SKILL.MD Files",     "role": "DIREKTIF AI AGENT" },
+      { "name": "DESIGN.MD Files",    "role": "PANDUAN DESAIN AI" },
+      { "name": "MCP Servers",        "role": "MODEL CONTEXT PROTOCOL" }
+    ],
+    "organizations": [
+      "Cursor",
+      "VS Code",
+      "Claude Code",
+      "Windsurf",
+      "Zed",
+      "Cline",
+      "Continue",
+      "Copilot"
+    ]
+  }
+}

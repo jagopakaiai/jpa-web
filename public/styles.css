@@ -1,5 +1,5 @@
 /* ============================================================
-   CIM — Center for Interactive Media
+   JPA — JagoPakaiAI
    Nothing Design System · Living Billboard (5-cell carousel)
    Dark mode default via data-theme. Manual toggle.
    ============================================================ */
@@ -283,7 +283,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
    ============================================================ */
 .tile-event {
   grid-area: event;
-  border-color: var(--accent);
+  border-color: var(--border);
   cursor: pointer;
   text-decoration: none;
   color: inherit;
@@ -292,7 +292,6 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .tile-event:hover {
   border-color: var(--accent);
-  background: var(--accent-subtle);
 }
 
 .tile-event__date {
@@ -324,13 +323,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   margin-top: var(--space-md);
 }
 
-/* .tile-event__cta inherits bottom-right anchoring from .arrow-pill */
-.tile-event:hover .arrow-pill__arrow { transform: translateX(4px); }
-.tile-event:hover .tile-event__cta {
-  background: var(--accent);
-  color: var(--black);
-  border-color: var(--accent);
-}
+
 
 .tile-event--past { border-color: var(--border-visible); }
 .tile-event--past:hover { background: var(--surface-raised); }
@@ -348,7 +341,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   gap: var(--space-md);
 }
 
-.spotlight--research { grid-area: spotA; }
+.spotlight--blog-slider { grid-area: spotA; }
 .spotlight--showcase { grid-area: spotB; }
 .spotlight--touchpoint { grid-area: touch; }
 
@@ -411,7 +404,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   flex-shrink: 0;
 }
 
-/* --- FEATURE SLIDES (Transformer · CIM World): dot-grid + accent CTA --- */
+/* --- FEATURE SLIDES (Transformer · JPA Community): dot-grid + accent CTA --- */
 .slide--feature { position: absolute; inset: 0; }
 
 .slide__dot-grid {
@@ -842,7 +835,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 /* Silhouette enforcement in light mode: Georgia (full brand color) and Unity
    (red ink) collapse to pure near-black so the PARTNERS wall stays monochrome
-   and the accent budget (red = Launch Event + CIM World) stays intact. */
+   and the accent budget (red = Install Tile + JPA Community) stays intact. */
 [data-theme="light"] .partner-logo--georgia,
 [data-theme="light"] .partner-logo--unity {
   filter: brightness(0);
@@ -1300,7 +1293,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   gap: var(--space-md);
 }
 
-.footer-clusters, .footer-copy, .footer-institution, .footer-links a {
+.footer-clusters, .footer-copy, .footer-institution {
   font-family: 'Space Mono', monospace;
   font-size: var(--caption);
   letter-spacing: 0.06em;
@@ -1308,7 +1301,16 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   text-transform: uppercase;
 }
 
+.footer-links {
+  display: flex;
+  gap: var(--space-md);
+}
+
 .footer-links a {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--caption);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--text-secondary);
   transition: color 200ms var(--ease);
 }
@@ -1448,3 +1450,214 @@ button:focus-visible,
   .slide { transition: none !important; }
   .flip-char { min-width: 0; }
 }
+
+/* ============================================================
+   APP LAYOUT: Split 3-6-3 Column Bento Grid
+   ============================================================ */
+.app-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--tile-gap, 8px);
+  padding: var(--grid-padding, 8px);
+  padding-bottom: 0;
+  min-height: 0;
+  max-width: 100%;
+}
+
+.app-layout__left {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-md);
+}
+
+.app-layout__center {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-layout__right {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app-layout__scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: var(--space-xs);
+}
+
+.app-layout__scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.app-layout__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.app-layout__scroll::-webkit-scrollbar-thumb {
+  background: var(--border-visible);
+  border-radius: 999px;
+}
+.app-layout__scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--text-disabled);
+}
+
+/* --- SIDEBAR MENU LINK (Doto Font) --- */
+.menu-item-link {
+  font-family: 'Doto', monospace;
+  font-size: clamp(14px, 1.4vw, 20px);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  text-decoration: none;
+  display: block;
+  transition: border-color 200ms, background-color 200ms, color 200ms;
+}
+.menu-item-link:hover {
+  border-color: var(--accent);
+  color: var(--text-display);
+}
+.menu-item-link--active {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  color: var(--text-display);
+}
+
+@media (max-width: 992px) {
+  .app-layout {
+    grid-template-columns: 1fr;
+    gap: var(--tile-gap, 12px);
+    padding: calc(var(--space-2xl) + 44px) var(--space-md) var(--space-2xl);
+    overflow-y: auto;
+    height: auto;
+  }
+  .app-layout__left,
+  .app-layout__center,
+  .app-layout__right {
+    grid-column: span 12;
+  }
+  .app-layout__right {
+    display: none; /* Hide right panel on tablet/mobile for space efficiency */
+  }
+}
+
+/* --- LISTING CARD STYLES (Bento Sub-items) --- */
+.listing-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: var(--space-lg);
+  text-decoration: none;
+  transition: border-color 200ms, background 200ms;
+  display: block;
+  color: inherit;
+}
+.listing-card:hover {
+  border-color: var(--border-visible);
+  background: var(--surface);
+}
+.listing-card__label {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.08em;
+  color: var(--text-disabled);
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+}
+.listing-card__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--heading);
+  font-weight: 500;
+  color: var(--text-display);
+  margin-bottom: var(--space-xs);
+}
+.listing-card__excerpt {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: var(--body-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: var(--space-sm);
+}
+.listing-card__tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+.listing-card__tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-disabled);
+  padding: 2px 8px;
+  border: 1px solid var(--border-visible);
+  border-radius: 999px;
+  background: transparent;
+}
+
+/* --- COLLEGE DOTS / DASHBOARD STATS --- */
+.college-dots {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+.college-dots__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 150ms var(--ease);
+  padding: var(--space-2xs) 0;
+}
+.college-dots__row:hover {
+  color: var(--text-display);
+}
+.college-dots__label {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.college-dots__grid {
+  flex: 1;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+}
+.college-dots__grid .dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--border-visible);
+  display: inline-block;
+}
+.college-dots__row:hover .college-dots__grid .dot {
+  background: var(--accent);
+}
+.college-dots__count {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  color: var(--text-disabled);
+  flex-shrink: 0;
+}
+.college-dots__row:hover .college-dots__count {
+  color: var(--text-display);
+}
+
+
+

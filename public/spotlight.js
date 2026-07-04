@@ -1,4 +1,4 @@
-/* CIM · Living Billboard · spotlight carousel controller
+/* JPA · Living Billboard · spotlight carousel controller
  *
  * Each `.spotlight` region owns one carousel. Auto-advance every 8s with
  * staggered starts so the three carousels never transition in unison.
@@ -8,7 +8,7 @@
   'use strict';
 
   var INTERVAL_MS = 8000;
-  var STAGGER_MS = { research: 0, showcase: 3000, touchpoint: 5000 };
+  var STAGGER_MS = { 'blog-slider': 0, showcase: 3000, touchpoint: 5000 };
   var ROLL_CYCLES_MIN = 3;
   var ROLL_CYCLES_MAX = 5;
   var ROLL_TICK_MS = 45;

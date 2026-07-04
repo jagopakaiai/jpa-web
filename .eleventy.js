@@ -14,6 +14,41 @@ module.exports = (eleventy) => {
       .replace(/>/g, "&gt;");
   });
 
+  // Date formatting filter for blog posts
+  eleventy.addFilter("dateFormat", (date) => {
+    if (!date) return "";
+    const d = new Date(date);
+    return d.toLocaleDateString("id-ID", { year: "numeric", month: "long", day: "numeric" });
+  });
+
+  // Markdown excerpt filter — first paragraph
+  eleventy.addFilter("excerpt", (content) => {
+    if (!content) return "";
+    const stripped = content.replace(/<[^>]+>/g, "");
+    return stripped.substring(0, 160) + (stripped.length > 160 ? "…" : "");
+  });
+
+  // Blog collection — markdown files in src/blog/
+  eleventy.addCollection("blog", (collectionApi) => {
+    return collectionApi.getFilteredByGlob("src/blog/*.md").sort((a, b) => {
+      return (b.data.date || 0) - (a.data.date || 0);
+    });
+  });
+
+  // Designs collection — markdown files in src/designs/
+  eleventy.addCollection("designs", (collectionApi) => {
+    return collectionApi.getFilteredByGlob("src/designs/*.md").sort((a, b) => {
+      return (b.data.downloads || 0) - (a.data.downloads || 0);
+    });
+  });
+
+  // MCPs collection — markdown files in src/mcps/
+  eleventy.addCollection("mcps", (collectionApi) => {
+    return collectionApi.getFilteredByGlob("src/mcps/*.md").sort((a, b) => {
+      return (b.data.installs || 0) - (a.data.installs || 0);
+    });
+  });
+
   eleventy.setNunjucksEnvironmentOptions({ autoescape: false });
 
   return {

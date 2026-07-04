@@ -4,10 +4,9 @@ _site/
 # Dependencies
 node_modules/
 
-# Vercel
-.vercel/
+# Netlify
+.netlify/
 
 # OS / editor
 .DS_Store
 .playwright-mcp/
-.vercel

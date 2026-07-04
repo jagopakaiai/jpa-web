@@ -1,7 +1,7 @@
 {
-  "name": "cim-site-3",
+  "name": "jpa-site",
   "version": "1.0.0",
-  "description": "CIM — Center for Interactive Media at Kennesaw State University",
+  "description": "JPA — JagoPakaiAI Hub SKILL.MD, DESIGN.MD & MCP untuk AI Agent Indonesia",
   "private": true,
   "scripts": {
     "dev": "eleventy --serve --quiet",

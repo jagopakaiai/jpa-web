@@ -1,9 +1,9 @@
 {
-  "label": "Contact touchpoint",
-  "controlsLabel": "Contact spotlight controls",
-  "prevLabel": "Previous contact slide",
-  "nextLabel": "Next contact slide",
-  "dotsLabel": "Contact slides",
+  "label": "Kontak & Komunitas",
+  "controlsLabel": "Kontak spotlight controls",
+  "prevLabel": "Previous kontak slide",
+  "nextLabel": "Next kontak slide",
+  "dotsLabel": "Kontak slides",
   "slides": [
     {
       "type": "touchpoint",
@@ -12,50 +12,50 @@
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "link",
-        "text": "cim@kennesaw.edu",
-        "href": "mailto:cim@kennesaw.edu",
+        "text": "hi@jpa.my.id",
+        "href": "mailto:hi@jpa.my.id",
         "extraClass": "touch-primary--large"
       },
       "decoration": "qr",
       "cta": {
         "kind": "btn-primary",
-        "text": "START A CONVERSATION",
-        "href": "mailto:cim@kennesaw.edu"
+        "text": "HUBUNGI KAMI",
+        "href": "mailto:hi@jpa.my.id"
       }
     },
     {
       "type": "touchpoint",
-      "label": "LINKEDIN",
-      "dotLabel": "LinkedIn",
+      "label": "GITHUB",
+      "dotLabel": "GitHub",
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "handle",
-        "text": "@ksu-cim",
+        "text": "@jagopakaiai",
         "extraClass": "touch-handle--xl"
       },
       "decoration": "linkedin",
       "cta": {
         "kind": "arrow-pill",
         "text": "FOLLOW",
-        "href": "https://www.linkedin.com/showcase/ksu-cim/",
+        "href": "https://github.com/jagopakaiai",
         "variant": "interactive"
       }
     },
     {
       "type": "touchpoint",
-      "label": "VISIT",
-      "dotLabel": "Visit",
+      "label": "WEBSITE",
+      "dotLabel": "Website",
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "venue",
-        "text": "Shore Innovation Center"
+        "text": "jpa.my.id"
       },
       "decoration": null,
       "address": {
         "lines": [
-          "970 Technology Way",
-          "Marietta, GA 30060",
-          "KSU Marietta Campus"
+          "JagoPakaiAI",
+          "Hub AI Agent Indonesia",
+          "Open Source · Community Driven"
         ]
       }
     }

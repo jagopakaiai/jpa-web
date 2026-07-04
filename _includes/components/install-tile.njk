@@ -1,0 +1,143 @@
+<div class="tile tile-event" style="cursor: default; display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+  <div>
+    <div class="tile-label">{{ jpacli.tile.label | h }}</div>
+    
+    <div class="tile-event__date" style="font-size: clamp(24px, 2.5vw, 40px); letter-spacing: -0.01em; display: flex; align-items: baseline; gap: var(--space-sm); flex-wrap: wrap; margin-bottom: var(--space-xs);">
+      <span>JPA CLI</span>
+      <span style="font-size: var(--body-sm); font-family: 'Space Mono', monospace; font-weight: normal; color: var(--text-secondary); text-transform: none; letter-spacing: 0;">{{ jpacli.tile.date | h }}</span>
+    </div>
+
+    <!-- Brief Explanation -->
+    <p style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); margin-bottom: var(--space-md); line-height: 1.4; text-align: left; min-height: 36px;">
+      Otomatisasi konfigurasi direktif (SKILL.MD, DESIGN.MD) dan MCP server AI Agent.
+    </p>
+
+    <!-- Installation Tab Switcher -->
+    <div class="install-tabs" style="display: flex; gap: var(--space-md); border-bottom: 1px solid var(--border-visible); padding-bottom: 6px; font-family: 'Space Mono', monospace; font-size: var(--caption); margin-bottom: var(--space-sm); flex-wrap: wrap;">
+      <span class="install-tab" data-target="curl" style="cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid var(--accent); color: var(--text-display); font-weight: 500;">curl</span>
+      <span class="install-tab" data-target="npm" style="cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid transparent; color: var(--text-secondary);">npm</span>
+      <span class="install-tab" data-target="bun" style="cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid transparent; color: var(--text-secondary);">bun</span>
+      <span class="install-tab" data-target="brew" style="cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid transparent; color: var(--text-secondary);">brew</span>
+      <span class="install-tab" data-target="powershell" style="cursor: pointer; padding-bottom: 6px; border-bottom: 2px solid transparent; color: var(--text-secondary);">powershell</span>
+    </div>
+
+    <!-- Command Boxes with Copy Button -->
+    <div class="install-commands-wrapper" style="margin-bottom: var(--space-md); min-height: 56px; display: flex; flex-direction: column; justify-content: center;">
+      
+      <!-- curl -->
+      <div id="cmd-curl" class="install-code-box" style="display: flex; align-items: center; justify-content: space-between; background: var(--surface-raised); border: 1px solid var(--border); padding: 8px var(--space-sm); border-radius: 6px; font-family: 'Space Mono', monospace; font-size: var(--body-sm); gap: var(--space-sm);">
+        <code class="install-code-text" style="color: var(--text-primary); word-break: break-all; text-align: left; flex: 1;">curl -fsSL https://raw.githubusercontent.com/jagopakaiai/jpa-cli/main/install.sh | sh</code>
+        <button class="copy-btn" data-copy="curl -fsSL https://raw.githubusercontent.com/jagopakaiai/jpa-cli/main/install.sh | sh" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 2px; display: flex; align-items: center; transition: color 0.15s; margin-left: 4px;" title="Copy to clipboard">
+          <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        </button>
+      </div>
+
+      <!-- npm -->
+      <div id="cmd-npm" class="install-code-box" style="display: none; align-items: center; justify-content: space-between; background: var(--surface-raised); border: 1px solid var(--border); padding: 8px var(--space-sm); border-radius: 6px; font-family: 'Space Mono', monospace; font-size: var(--body-sm); gap: var(--space-sm);">
+        <code class="install-code-text" style="color: var(--text-primary); word-break: break-all; text-align: left; flex: 1;">npm install -g @jagopakaiai/jpa-cli</code>
+        <button class="copy-btn" data-copy="npm install -g @jagopakaiai/jpa-cli" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 2px; display: flex; align-items: center; transition: color 0.15s; margin-left: 4px;" title="Copy to clipboard">
+          <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        </button>
+      </div>
+
+      <!-- bun -->
+      <div id="cmd-bun" class="install-code-box" style="display: none; align-items: center; justify-content: space-between; background: var(--surface-raised); border: 1px solid var(--border); padding: 8px var(--space-sm); border-radius: 6px; font-family: 'Space Mono', monospace; font-size: var(--body-sm); gap: var(--space-sm);">
+        <code class="install-code-text" style="color: var(--text-primary); word-break: break-all; text-align: left; flex: 1;">bun add -g @jagopakaiai/jpa-cli</code>
+        <button class="copy-btn" data-copy="bun add -g @jagopakaiai/jpa-cli" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 2px; display: flex; align-items: center; transition: color 0.15s; margin-left: 4px;" title="Copy to clipboard">
+          <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        </button>
+      </div>
+
+      <!-- brew -->
+      <div id="cmd-brew" class="install-code-box" style="display: none; align-items: center; justify-content: space-between; background: var(--surface-raised); border: 1px solid var(--border); padding: 8px var(--space-sm); border-radius: 6px; font-family: 'Space Mono', monospace; font-size: var(--body-sm); gap: var(--space-sm);">
+        <code class="install-code-text" style="color: var(--text-primary); word-break: break-all; text-align: left; flex: 1;">brew install jpa-cli</code>
+        <button class="copy-btn" data-copy="brew install jpa-cli" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 2px; display: flex; align-items: center; transition: color 0.15s; margin-left: 4px;" title="Copy to clipboard">
+          <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        </button>
+      </div>
+
+      <!-- powershell -->
+      <div id="cmd-powershell" class="install-code-box" style="display: none; align-items: center; justify-content: space-between; background: var(--surface-raised); border: 1px solid var(--border); padding: 8px var(--space-sm); border-radius: 6px; font-family: 'Space Mono', monospace; font-size: var(--body-sm); gap: var(--space-sm);">
+        <code class="install-code-text" style="color: var(--text-primary); word-break: break-all; text-align: left; flex: 1;">irm https://raw.githubusercontent.com/jagopakaiai/jpa-cli/main/install.ps1 | iex</code>
+        <button class="copy-btn" data-copy="irm https://raw.githubusercontent.com/jagopakaiai/jpa-cli/main/install.ps1 | iex" style="background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 2px; display: flex; align-items: center; transition: color 0.15s; margin-left: 4px;" title="Copy to clipboard">
+          <svg style="width:16px; height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Supported AI Agents List -->
+    <div style="margin-bottom: var(--space-lg); text-align: left;">
+      <div class="tile-event__sponsors" style="margin-bottom: var(--space-xs); font-family: 'Space Mono', monospace; font-size: var(--label); color: var(--text-disabled); letter-spacing: 0.08em; text-transform: uppercase;">
+        Supported Editors & AI Agents
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 6px; font-family: 'Space Mono', monospace; font-size: var(--caption); color: var(--text-secondary);">
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Claude Code</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Cursor</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Cline / Roo Code</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">VS Code</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Windsurf</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Zed</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Continue</span>
+        <span style="border: 1px solid var(--border); padding: 2px 6px; border-radius: 4px; background: var(--surface-raised);">Antigravity</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="{{ jpacli.tile.href }}" class="tile-event__cta arrow-pill arrow-pill--accent" style="align-self: flex-start;">
+    <span>{{ jpacli.tile.ctaText | h }}</span>
+    <span class="arrow-pill__arrow">→</span>
+  </a>
+</div>
+
+<script>
+  (function() {
+    var tile = document.querySelector('.tile-event');
+    if (!tile) return;
+    
+    // Tab switching logic
+    var tabs = tile.querySelectorAll('.install-tab');
+    var codeBoxes = tile.querySelectorAll('.install-code-box');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        tabs.forEach(function(t) {
+          t.style.borderBottomColor = 'transparent';
+          t.style.color = 'var(--text-secondary)';
+          t.style.fontWeight = 'normal';
+        });
+        tab.style.borderBottomColor = 'var(--accent)';
+        tab.style.color = 'var(--text-display)';
+        tab.style.fontWeight = '500';
+        
+        var target = tab.getAttribute('data-target');
+        codeBoxes.forEach(function(box) {
+          if (box.id === 'cmd-' + target) {
+            box.style.display = 'flex';
+          } else {
+            box.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Copy to clipboard logic
+    var copyButtons = tile.querySelectorAll('.copy-btn');
+    copyButtons.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var text = btn.getAttribute('data-copy');
+        navigator.clipboard.writeText(text).then(function() {
+          var originalHTML = btn.innerHTML;
+          btn.innerHTML = '<svg style="width:16px; height:16px; color: var(--accent);" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+          setTimeout(function() {
+            btn.innerHTML = originalHTML;
+          }, 1500);
+        }).catch(function(err) {
+          console.error('Failed to copy text: ', err);
+        });
+      });
+    });
+  })();
+</script>

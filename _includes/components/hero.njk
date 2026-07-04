@@ -1,7 +1,49 @@
-<section class="tile tile-hero" aria-label="{{ site.siteName | h }} Hero">
-      <div class="tile-hero__label">{{ hero.label | h }}</div>
-      <h1 class="tile-hero__title">{{ hero.title | h }}</h1>
-      <p class="tile-hero__subtitle">{{ hero.subtitle | h }}</p>
-      <p class="tile-hero__desc">{{ hero.description | h }}</p>
-      <a href="{{ hero.ctaHref }}" class="btn-primary tile-hero__cta">{{ hero.ctaText | h }}</a>
-    </section>
+<section class="tile tile-hero" id="about" aria-label="{{ site.siteName | h }} Hero" style="padding: var(--space-xl);">
+  <style>
+    .tile-hero__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+      width: 100%;
+    }
+    @media (min-width: 900px) {
+      .tile-hero__grid {
+        grid-template-columns: 1.25fr 1.05fr;
+        align-items: stretch;
+      }
+      .tile-hero__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+    }
+  </style>
+
+  <div class="tile-hero__grid">
+    <!-- Left Column: Branding Content -->
+    <div class="tile-hero__content">
+      <div>
+        <div class="tile-hero__label">{{ hero.label | h }}</div>
+        <h1 class="tile-hero__title" style="margin-top: 0; margin-bottom: var(--space-sm);">{{ hero.title | h }}</h1>
+        <p class="tile-hero__subtitle">{{ hero.subtitle | h }}</p>
+        <p class="tile-hero__desc" style="margin-bottom: var(--space-md); max-width: 48ch;">{{ hero.description | h }}</p>
+      </div>
+      <a href="{{ hero.ctaHref }}" class="btn-primary tile-hero__cta" style="align-self: flex-start; margin-top: var(--space-sm);">
+        {{ hero.ctaText | h }}
+      </a>
+    </div>
+
+    <!-- Right Column: Stats Grid (Gambar 2 theme) -->
+    <div class="tile-hero__stats" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">SEKILAS JPA</div>
+      <div class="stats-grid" style="padding-right: 0; gap: var(--space-sm); flex: 1;">
+        {%- for stat in hero.stats %}
+        <div class="stat" style="border: 1px solid var(--border); padding: var(--space-sm); border-radius: 6px; background: var(--surface-raised); height: 100%; width: 100%; box-sizing: border-box; justify-content: center; display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <span class="stat-value" style="font-size: var(--display-md); line-height: 1.0;">{{ stat.value | h }}</span>
+          <span class="stat-label" style="font-size: var(--caption); margin-top: 4px; line-height: 1.0;">{{ stat.label | h }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>

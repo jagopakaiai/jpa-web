@@ -1,0 +1,121 @@
+{% extends "layout.njk" %}
+
+{% set title = originalTitle + " — JPA Blog" %}
+{% set description = excerpt %}
+
+{% block head %}
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+    })();
+  </script>
+{% endblock %}
+
+{% block body %}
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <div class="app-layout" id="main-content">
+
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          Blog / Artikel
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          Informasi & Tutorial AI Agent.
+        </p>
+      </div>
+
+      {% set activeMenu = 'blog' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Scrollable Article bento tile content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg);">
+      <div class="app-layout__scroll" style="padding-right: var(--space-md);">
+        <div class="blog-post__meta" style="display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); flex-wrap: wrap;">
+          {% if category %}
+            <span class="blog-post__category" style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.08em; color: var(--accent); text-transform: uppercase; border: 1px solid var(--accent); padding: 2px 10px; border-radius: 999px;">{{ category | h }}</span>
+          {% endif %}
+          <span class="blog-post__date" style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.04em; color: var(--text-disabled);">{{ date | dateFormat }} · {{ author | default("JPA Team") | h }}</span>
+        </div>
+
+        <h1 class="blog-post__title" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--heading-lg); font-weight: 500; color: var(--text-display); line-height: 1.2; margin-bottom: var(--space-md);">
+          {{ originalTitle | h }}
+        </h1>
+
+        {% if excerpt %}
+          <p class="blog-post__excerpt" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-lg); padding-bottom: var(--space-lg); border-bottom: 1px solid var(--border);">
+            {{ excerpt | h }}
+          </p>
+        {% endif %}
+
+        <article class="blog-post__body" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-primary); line-height: 1.7;">
+          {{ content | safe }}
+        </article>
+
+        {% if tags %}
+        <div class="blog-post__tags" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border);">
+          {% for tag in tags %}
+            {% if tag != "blog" %}
+            <span class="blog-post__tag" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--text-disabled); padding: 3px 10px; border: 1px solid var(--border-visible); border-radius: 999px; text-transform: uppercase;">#{{ tag | h }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="blog-post__nav" style="display: flex; justify-content: space-between; margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--border); gap: var(--space-md);">
+          <a href="/blog.html" style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.06em; color: var(--text-secondary); text-decoration: none; text-transform: uppercase; transition: color 180ms;">← KEMBALI</a>
+          <a href="/index.html" style="font-family: 'Space Mono', monospace; font-size: var(--label); letter-spacing: 0.06em; color: var(--text-secondary); text-decoration: none; text-transform: uppercase; transition: color 180ms;">JPA HOME →</a>
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Balancing Bento Panel -->
+    <aside class="tile app-layout__right">
+      <div>
+        <div class="tile-label">ECOSYSTEM</div>
+        <div style="font-family: 'Doto', monospace; font-size: var(--subheading); font-weight: 700; color: var(--text-display); margin-bottom: var(--space-sm);">JAGO PAKAI AI</div>
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.45;">
+          Platform kolaboratif untuk mengoptimalkan efisiensi coding AI Agent di Indonesia dengan direktif (SKILL.MD, DESIGN.MD) dan MCP server terbaik.
+        </p>
+      </div>
+      
+      <div style="border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: var(--space-md);">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">JPA CLI VERSION</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent);">v1.2.2</div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+    })();
+  </script>
+{% endblock %}

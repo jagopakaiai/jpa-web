@@ -1,0 +1,224 @@
+{% extends "layout.njk" %}
+
+{% set title = "SKILL.MD Directory — JPA · JagoPakaiAI" %}
+{% set description = "50+ SKILL.MD files untuk AI Agent — coding, devops, design, data, writing, dan productivity. Browse dan install via JPA CLI." %}
+{% set zoom = "medium" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/styles.css">
+  <script>
+    (function(){
+      var t=localStorage.getItem('jpa-theme');if(t)document.documentElement.setAttribute('data-theme',t);
+      var z=localStorage.getItem('jpa-zoom')||'medium';document.documentElement.setAttribute('data-zoom',z);
+    })();
+  </script>
+  <style>
+
+    /* Styling for Center Faculty/Skill List */
+    .faculty-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .college-section {
+      margin-bottom: var(--space-lg);
+    }
+    .college-section__title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--subheading);
+      font-weight: 500;
+      color: var(--text-display);
+      margin-bottom: var(--space-sm);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-xs);
+    }
+    .faculty-member {
+      display: grid;
+      grid-template-columns: 2fr 1.5fr 3fr;
+      gap: var(--space-md);
+      padding: var(--space-sm) 0;
+      border-bottom: 1px dashed var(--border);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: var(--body-sm);
+      color: var(--text-secondary);
+      transition: color 150ms var(--ease);
+    }
+    .faculty-member:hover {
+      color: var(--text-primary);
+    }
+    .faculty-member__name {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .faculty-member__dept {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+    
+    /* Zoom controls */
+    .zoom-control {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid var(--border-visible);
+      border-radius: 4px;
+      padding: 2px;
+      background: var(--surface);
+    }
+    .zoom-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-disabled);
+      width: 24px;
+      height: 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 150ms var(--ease);
+    }
+    .zoom-btn:hover {
+      color: var(--text-primary);
+    }
+    .zoom-btn--active {
+      background: var(--accent);
+      color: var(--black) !important;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+
+  <div class="page-toolbar" role="toolbar" aria-label="Display settings">
+    <div class="zoom-control" role="radiogroup" aria-label="Zoom level" style="margin-right: var(--space-sm);">
+      <button class="zoom-btn" data-zoom="small" role="radio" aria-checked="false" aria-label="Small zoom">S</button>
+      <button class="zoom-btn zoom-btn--active" data-zoom="medium" role="radio" aria-checked="true" aria-label="Medium zoom">M</button>
+      <button class="zoom-btn" data-zoom="large" role="radio" aria-checked="false" aria-label="Large zoom">L</button>
+    </div>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark and light mode" title="Toggle theme">
+      <span class="theme-toggle__track">
+        <span class="theme-toggle__knob"></span>
+      </span>
+      <span class="theme-toggle__label" aria-hidden="true">DARK</span>
+    </button>
+  </div>
+
+  <div class="app-layout" id="main-content">
+    
+    <!-- LEFT COLUMN (1/4): Title & Sidebar Menu -->
+    <aside class="tile app-layout__left">
+      <div>
+        <h1 class="listing-title" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2vw, 36px); font-weight: 700; color: var(--text-display); line-height: 1.1; margin-bottom: var(--space-xs);">
+          SKILL.MD
+        </h1>
+        <p class="listing-subtitle" style="font-family: 'Space Grotesk', sans-serif; font-size: var(--body-sm); color: var(--text-secondary); line-height: 1.4;">
+          50+ SKILL.MD files untuk AI Agent.
+        </p>
+      </div>
+
+      {% set activeMenu = 'skills' %}
+      {% include "components/sidebar-menu.njk" %}
+    </aside>
+
+    <!-- CENTER COLUMN (2/4): Scrollable Bento-tile content -->
+    <main class="tile app-layout__center" style="padding: var(--space-lg);">
+      <div class="tile-label" style="margin-bottom: var(--space-md);">DIREKTORI SKILL TERSEDIA</div>
+      <div class="app-layout__scroll">
+        <div class="faculty-list" style="padding-right: var(--space-sm);">
+          {% for c in skillsData.colleges %}
+            <div class="college-section" id="{{ c.id }}">
+              <div class="college-section__title">{{ c.title | h }}</div>
+              {% for m in c.members %}
+                <div class="faculty-member">
+                  <span class="faculty-member__name">{{ m.name | h }}</span>
+                  <span class="faculty-member__dept">{{ m.dept | h }}</span>
+                  <span class="faculty-member__interest">{{ m.interest | h }}</span>
+                </div>
+              {%- endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <!-- RIGHT COLUMN (1/4): Stacked Bento Tiles (Dashboard + JPA CLI install) -->
+    <aside class="app-layout__right" style="display: flex; flex-direction: column; gap: var(--tile-gap, 8px); height: 100%;">
+      <!-- Top Box: Dashboard -->
+      <div class="tile" style="flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-start; gap: var(--space-xs); overflow-y: auto;">
+        <div class="tile-label" style="margin-bottom: var(--space-xs);">KATEGORI SKILL</div>
+        <div class="faculty-sidebar__hero" style="font-family: 'Doto', monospace; font-size: clamp(24px, 2.5vw, 36px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">{{ skillsData.total }}</div>
+        <div class="faculty-sidebar__unit" style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-sm);">{{ skillsData.totalUnit | h }}</div>
+        
+        <nav class="college-dots" aria-label="{{ skillsData.navAriaLabel | h }}">
+          {%- for id in skillsData.sidebarOrder %}
+            {%- for c in skillsData.colleges %}
+              {%- if c.id == id %}
+                <a href="#{{ c.id }}" class="college-dots__row" aria-label="{{ c.sidebarAriaLabel | h }}">
+                  <span class="college-dots__label" style="font-size: 11px;">{{ c.sidebarLabel | h }}</span>
+                  <span class="college-dots__grid" aria-hidden="true">
+                    {% for i in range(0, c.count) %}<span class="dot"></span>{% endfor %}
+                  </span>
+                  <span class="college-dots__count" style="font-size: 11px;">{{ c.count }}</span>
+                </a>
+              {%- endif %}
+            {%- endfor %}
+          {%- endfor %}
+        </nav>
+      </div>
+
+      <!-- Bottom Box: JPA CLI install-tile -->
+      <div style="flex: 2; display: flex; flex-direction: column; min-height: 0;">
+        {% include "components/install-tile.njk" %}
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- Footer -->
+  {% set footerLinks = [{ href: "/jpacli.html", label: "JPA CLI" }, { href: "/skills.html", label: "SKILL.MD" }, { href: "/blog.html", label: "BLOG" }] %}
+  {% include "components/footer.njk" %}
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('themeToggle');
+      var html = document.documentElement;
+      var label = toggle.querySelector('.theme-toggle__label');
+      var saved = localStorage.getItem('jpa-theme');
+      if (saved === 'light') { html.setAttribute('data-theme', 'light'); label.textContent = 'LIGHT'; }
+      toggle.addEventListener('click', function() {
+        var current = html.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        label.textContent = next.toUpperCase();
+        localStorage.setItem('jpa-theme', next);
+      });
+      var zoomBtns = document.querySelectorAll('.zoom-btn');
+      var savedZoom = localStorage.getItem('jpa-zoom') || 'medium';
+      html.setAttribute('data-zoom', savedZoom);
+      zoomBtns.forEach(function(btn) {
+        var isActive = btn.getAttribute('data-zoom') === savedZoom;
+        btn.classList.toggle('zoom-btn--active', isActive);
+        btn.setAttribute('aria-checked', isActive ? 'true' : 'false');
+      });
+      zoomBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var level = this.getAttribute('data-zoom');
+          html.setAttribute('data-zoom', level);
+          localStorage.setItem('jpa-zoom', level);
+          zoomBtns.forEach(function(b) {
+            var active = b.getAttribute('data-zoom') === level;
+            b.classList.toggle('zoom-btn--active', active);
+            b.setAttribute('aria-checked', active ? 'true' : 'false');
+          });
+        });
+      });
+    })();
+  </script>
+{% endblock %}
