@@ -19,7 +19,7 @@
       font-family: 'Space Mono', monospace;
       font-size: var(--label);
       letter-spacing: 0.12em;
-      color: var(--accent);
+      color: var(--text-display);
       text-transform: uppercase;
       margin-bottom: var(--space-md);
       border-bottom: 1px solid var(--border);
@@ -229,7 +229,7 @@
     <aside class="tile app-layout__right">
       <div>
         <div class="tile-label" style="margin-bottom: var(--space-xs);">RILIS TERBARU</div>
-        <div style="font-family: 'Doto', monospace; font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 2px;">{{ ev.date | h }}</div>
+        <div style="font-family: 'Doto', monospace; font-size: clamp(32px, 3.5vw, 48px); font-weight: 700; color: var(--text-display); line-height: 1; margin-bottom: 2px;">{{ ev.date | h }}</div>
         <div style="font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-disabled); text-transform: uppercase; margin-bottom: var(--space-md);">TAHUN RILIS: {{ ev.year | h }}</div>
         
         <div class="cli-meta-info">
@@ -249,7 +249,7 @@
       
       <div style="border-top: 1px solid var(--border); padding-top: var(--space-md); margin-top: var(--space-md);">
         <div class="tile-label" style="margin-bottom: var(--space-xs);">JPA CLI VERSION</div>
-        <div style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--accent);">v1.2.2</div>
+        <div style="font-family: 'Space Mono', monospace; font-size: var(--body-sm); color: var(--text-display);">v1.2.2</div>
       </div>
     </aside>
 
