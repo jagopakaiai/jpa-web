@@ -8,7 +8,6 @@
 //   GITHUB_OAUTH_CLIENT_SECRET
 //   SITE_URL
 
-const fetch = require("node-fetch");
 
 exports.handler = async (event) => {
   const clientId = (process.env.GITHUB_OAUTH_CLIENT_ID || "").trim();
