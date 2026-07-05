@@ -16,6 +16,9 @@ json_extension: json
 # Show a richer dashboard with collection cards instead of a flat list.
 display_url: https://jpa.my.id
 site_url: https://jpa.my.id
+logo:
+  src: /logo-admin.png
+  show_in_header: true
 
 # ──────────────────────────────────────────────────────────────────
 # Collections
