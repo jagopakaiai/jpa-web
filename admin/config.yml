@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: jagopakaiai/jpa-web
   branch: main
+  base_url: https://jpa.my.id
+  auth_endpoint: api/auth/github
 
 # All editor uploads land in /public/uploads/, which Eleventy
 # passthrough-copies to /uploads/ at the site root.
