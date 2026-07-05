@@ -12,11 +12,24 @@
       object-fit: contain !important;
     }
     
-    /* Keep the login page logo square and centered */
+    /* Keep the login page logo square, centered, and 2x larger */
     .container img.logo {
-      width: 96px !important;
-      height: 96px !important;
-      border-radius: 12px;
+      width: 192px !important;
+      height: 192px !important;
+      border-radius: 16px;
+    }
+
+    /* Change Sveltia CMS title to < JPA CMS > */
+    .container h1 {
+      font-size: 0 !important;
+    }
+
+    .container h1::after {
+      content: "< JPA CMS >" !important;
+      font-size: 23px !important;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
   </style>
   <!--
