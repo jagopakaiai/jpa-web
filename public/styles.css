@@ -609,6 +609,20 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   box-shadow: 0 0 0 2px var(--accent-subtle);
 }
 
+#directoryAllCta {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 150ms var(--ease);
+}
+
+#directoryAllCta:hover {
+  color: var(--text-display);
+}
+
 .directory-item__badge {
   font-family: 'Space Mono', monospace;
   font-size: 9px;
