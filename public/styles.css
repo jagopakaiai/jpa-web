@@ -342,7 +342,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 
 .spotlight--blog-slider { grid-area: spotA; }
-.spotlight--showcase { grid-area: spotB; }
+.spotlight--showcase,
+.spotlight--directory { grid-area: spotB; }
 .spotlight--touchpoint { grid-area: touch; }
 
 .spotlight__stage {
@@ -533,12 +534,13 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 .tile-faculty__legend span:nth-child(5)::before { background: var(--border); }
 
 /* --- Directory carousel slide --- */
-.slide__body--directory {
-  gap: var(--space-sm);
+.spotlight--directory {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  min-height: 0;
+}
+
+.spotlight--directory .slide .arrow-pill {
+  transform: none;
 }
 
 .directory-tabs {
@@ -553,14 +555,14 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .directory-tab {
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-disabled);
   background: transparent;
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 8px 14px;
   cursor: pointer;
   transition: all 180ms var(--ease);
   white-space: nowrap;
@@ -581,45 +583,30 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   border-color: var(--text-display);
 }
 
-.directory-items {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  overflow-y: auto;
-  min-height: 0;
-  padding-right: 2px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-visible) transparent;
+.directory-search-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 120px;
 }
 
-.directory-items::-webkit-scrollbar { width: 4px; }
-.directory-items::-webkit-scrollbar-track { background: transparent; }
-.directory-items::-webkit-scrollbar-thumb { background: var(--border-visible); border-radius: 2px; }
-
-.directory-item {
-  padding: 8px 10px;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+.directory-search-wrapper input {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 8px 14px;
+  border-radius: 4px;
+  border: 1px solid var(--border-visible);
   background: var(--surface-raised);
-  transition: border-color 180ms var(--ease), background 180ms var(--ease);
-  flex-shrink: 0;
+  color: var(--text-display);
+  width: 100%;
+  transition: border-color 150ms var(--ease), box-shadow 150ms var(--ease);
 }
 
-.directory-item:hover {
-  border-color: var(--accent);
-  background: rgba(171, 32, 253, 0.05);
-}
-
-.directory-item[data-hidden="true"] {
-  display: none;
-}
-
-.directory-item__header {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 3px;
+.directory-search-wrapper input:focus {
+  outline: none;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px var(--accent-subtle);
 }
 
 .directory-item__badge {
@@ -631,6 +618,7 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   padding: 1px 6px;
   border-radius: 3px;
   line-height: 1.4;
+  display: inline-block;
 }
 
 .directory-item__badge--skill {
@@ -646,36 +634,6 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 .directory-item__badge--mcp {
   background: rgba(74, 158, 92, 0.15);
   color: var(--success);
-}
-
-.directory-item__category {
-  font-family: 'Space Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.06em;
-  color: var(--text-disabled);
-  text-transform: uppercase;
-}
-
-.directory-item__title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: var(--body-sm);
-  font-weight: 500;
-  color: var(--text-display);
-  line-height: 1.3;
-  text-transform: capitalize;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.directory-item__desc {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 11px;
-  color: var(--text-secondary);
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* --- Stats grid (At-a-Glance slide) --- */
@@ -1499,7 +1457,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     min-height: 320px;
   }
 
-  .spotlight--showcase { min-height: 420px; }
+  .spotlight--showcase,
+  .spotlight--directory { min-height: 420px; }
 }
 
 /* ============================================================

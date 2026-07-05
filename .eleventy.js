@@ -64,7 +64,8 @@ module.exports = (eleventy) => {
           category: college.sidebarLabel,
           description: m.interest,
           type: "skill",
-          date: m.date ? new Date(m.date) : new Date("2026-06-01")
+          date: m.date ? new Date(m.date) : new Date("2026-06-01"),
+          url: "skills.html#" + college.id
         });
       });
     });
@@ -76,7 +77,8 @@ module.exports = (eleventy) => {
         category: d.data.category,
         description: d.data.description,
         type: "design",
-        date: d.data.date ? new Date(d.data.date) : new Date("2026-06-01")
+        date: d.data.date ? new Date(d.data.date) : new Date("2026-06-01"),
+        url: "designs.html"
       });
     });
 
@@ -87,7 +89,8 @@ module.exports = (eleventy) => {
         category: m.data.category,
         description: m.data.description,
         type: "mcp",
-        date: m.data.date ? new Date(m.data.date) : new Date("2026-06-01")
+        date: m.data.date ? new Date(m.data.date) : new Date("2026-06-01"),
+        url: "mcps.html"
       });
     });
 

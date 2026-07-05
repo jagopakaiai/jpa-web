@@ -39,10 +39,8 @@
     <!-- FIXED: JPA CLI INSTALL TILE -->
     {% include "components/install-tile.njk" %}
 
-    <!-- ROTATING: SPOTLIGHT B — SHOWCASE -->
-    {% set spot = "showcase" %}
-    {% set spotData = spotlights.showcase %}
-    {% include "components/spotlight.njk" %}
+    <!-- FIXED: DIRECTORY SLIDER -->
+    {% include "components/directory-spotlight.njk" %}
 
     <!-- ROTATING: TOUCHPOINT -->
     {% set spot = "touchpoint" %}
@@ -80,4 +78,5 @@
 
   <!-- Spotlight carousel controller -->
   <script src="spotlight.js" defer></script>
+  <script src="directory-slider.js" defer></script>
 {% endblock %}
