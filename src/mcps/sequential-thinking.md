@@ -1,6 +1,7 @@
 ---
 title: "Sequential Thinking"
 slug: "sequential-thinking"
+date: 2026-06-25
 category: "Reasoning"
 protocol: "MCP"
 description: "MCP server untuk membantu AI Agent melakukan analisis step-by-step dan reasoning terstruktur pada masalah kompleks."

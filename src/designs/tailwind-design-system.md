@@ -1,6 +1,7 @@
 ---
 title: "Tailwind CSS Design System"
 slug: "tailwind-design-system"
+date: 2026-06-20
 category: "Frontend"
 framework: "TailwindCSS"
 description: "Template DESIGN.MD untuk project berbasis TailwindCSS — mencakup color tokens, spacing scale, component patterns, dan responsive breakpoints."

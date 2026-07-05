@@ -17,21 +17,21 @@
       "sidebarEmphasis": "interactive",
       "count": 15,
       "members": [
-        { "name": "next-js-expert.md",       "dept": "Next.js",       "interest": "Full-stack React framework expert" },
-        { "name": "react-component.md",       "dept": "React",         "interest": "Component architecture & hooks patterns" },
-        { "name": "typescript-strict.md",     "dept": "TypeScript",    "interest": "Strict type-safe development" },
-        { "name": "python-fastapi.md",        "dept": "Python",        "interest": "FastAPI backend development" },
-        { "name": "tailwind-ui.md",           "dept": "TailwindCSS",   "interest": "Utility-first CSS framework" },
-        { "name": "go-microservice.md",       "dept": "Go",            "interest": "Microservice architecture" },
-        { "name": "rust-systems.md",          "dept": "Rust",          "interest": "Systems programming" },
-        { "name": "vue-composition.md",       "dept": "Vue.js",        "interest": "Composition API patterns" },
-        { "name": "svelte-kit.md",            "dept": "SvelteKit",     "interest": "Full-stack Svelte framework" },
-        { "name": "laravel-api.md",           "dept": "Laravel",       "interest": "PHP API development" },
-        { "name": "django-rest.md",           "dept": "Django",        "interest": "REST API with Django" },
-        { "name": "node-express.md",          "dept": "Node.js",       "interest": "Express.js backend patterns" },
-        { "name": "flutter-mobile.md",        "dept": "Flutter",       "interest": "Cross-platform mobile dev" },
-        { "name": "astro-static.md",          "dept": "Astro",         "interest": "Content-driven static sites" },
-        { "name": "nuxt-fullstack.md",        "dept": "Nuxt",          "interest": "Vue full-stack framework" }
+        { "name": "next-js-expert.md",       "dept": "Next.js",       "interest": "Full-stack React framework expert",           "date": "2026-06-01" },
+        { "name": "react-component.md",       "dept": "React",         "interest": "Component architecture & hooks patterns",     "date": "2026-06-02" },
+        { "name": "typescript-strict.md",     "dept": "TypeScript",    "interest": "Strict type-safe development",                "date": "2026-06-03" },
+        { "name": "python-fastapi.md",        "dept": "Python",        "interest": "FastAPI backend development",                 "date": "2026-06-04" },
+        { "name": "tailwind-ui.md",           "dept": "TailwindCSS",   "interest": "Utility-first CSS framework",                "date": "2026-06-05" },
+        { "name": "go-microservice.md",       "dept": "Go",            "interest": "Microservice architecture",                  "date": "2026-06-06" },
+        { "name": "rust-systems.md",          "dept": "Rust",          "interest": "Systems programming",                        "date": "2026-06-07" },
+        { "name": "vue-composition.md",       "dept": "Vue.js",        "interest": "Composition API patterns",                   "date": "2026-06-08" },
+        { "name": "svelte-kit.md",            "dept": "SvelteKit",     "interest": "Full-stack Svelte framework",                "date": "2026-06-09" },
+        { "name": "laravel-api.md",           "dept": "Laravel",       "interest": "PHP API development",                        "date": "2026-06-10" },
+        { "name": "django-rest.md",           "dept": "Django",        "interest": "REST API with Django",                       "date": "2026-06-11" },
+        { "name": "node-express.md",          "dept": "Node.js",       "interest": "Express.js backend patterns",                "date": "2026-06-12" },
+        { "name": "flutter-mobile.md",        "dept": "Flutter",       "interest": "Cross-platform mobile dev",                  "date": "2026-06-13" },
+        { "name": "astro-static.md",          "dept": "Astro",         "interest": "Content-driven static sites",                "date": "2026-06-14" },
+        { "name": "nuxt-fullstack.md",        "dept": "Nuxt",          "interest": "Vue full-stack framework",                   "date": "2026-06-15" }
       ]
     },
     {
@@ -42,14 +42,14 @@
       "sidebarEmphasis": null,
       "count": 8,
       "members": [
-        { "name": "docker-compose.md",        "dept": "Docker",        "interest": "Container orchestration" },
-        { "name": "kubernetes-deploy.md",      "dept": "Kubernetes",    "interest": "K8s deployment patterns" },
-        { "name": "github-actions.md",         "dept": "CI/CD",         "interest": "GitHub Actions workflows" },
-        { "name": "terraform-infra.md",        "dept": "Terraform",     "interest": "Infrastructure as code" },
-        { "name": "aws-serverless.md",         "dept": "AWS",           "interest": "Lambda & serverless patterns" },
-        { "name": "nginx-config.md",           "dept": "Nginx",         "interest": "Reverse proxy & caching" },
-        { "name": "linux-admin.md",            "dept": "Linux",         "interest": "Server administration" },
-        { "name": "monitoring-stack.md",        "dept": "Observability", "interest": "Prometheus & Grafana stack" }
+        { "name": "docker-compose.md",        "dept": "Docker",        "interest": "Container orchestration",                    "date": "2026-06-16" },
+        { "name": "kubernetes-deploy.md",      "dept": "Kubernetes",    "interest": "K8s deployment patterns",                    "date": "2026-06-17" },
+        { "name": "github-actions.md",         "dept": "CI/CD",         "interest": "GitHub Actions workflows",                   "date": "2026-06-18" },
+        { "name": "terraform-infra.md",        "dept": "Terraform",     "interest": "Infrastructure as code",                     "date": "2026-06-19" },
+        { "name": "aws-serverless.md",         "dept": "AWS",           "interest": "Lambda & serverless patterns",               "date": "2026-06-20" },
+        { "name": "nginx-config.md",           "dept": "Nginx",         "interest": "Reverse proxy & caching",                    "date": "2026-06-21" },
+        { "name": "linux-admin.md",            "dept": "Linux",         "interest": "Server administration",                      "date": "2026-06-22" },
+        { "name": "monitoring-stack.md",        "dept": "Observability", "interest": "Prometheus & Grafana stack",                 "date": "2026-06-23" }
       ]
     },
     {
@@ -60,14 +60,14 @@
       "sidebarEmphasis": "accent",
       "count": 8,
       "members": [
-        { "name": "figma-to-code.md",          "dept": "Figma",         "interest": "Design to code workflow" },
-        { "name": "design-system.md",          "dept": "System",        "interest": "Component library & tokens" },
-        { "name": "responsive-layout.md",      "dept": "Layout",        "interest": "Mobile-first responsive design" },
-        { "name": "accessibility-a11y.md",     "dept": "A11Y",          "interest": "WCAG 2.1 compliance" },
-        { "name": "animation-motion.md",       "dept": "Motion",        "interest": "Micro-interactions & transitions" },
-        { "name": "dark-mode.md",              "dept": "Theming",       "interest": "Dark/light mode patterns" },
-        { "name": "icon-system.md",            "dept": "Icons",         "interest": "SVG icon management" },
-        { "name": "typography-scale.md",       "dept": "Typography",    "interest": "Fluid type scale system" }
+        { "name": "figma-to-code.md",          "dept": "Figma",         "interest": "Design to code workflow",                    "date": "2026-06-24" },
+        { "name": "design-system.md",          "dept": "System",        "interest": "Component library & tokens",                 "date": "2026-06-25" },
+        { "name": "responsive-layout.md",      "dept": "Layout",        "interest": "Mobile-first responsive design",             "date": "2026-06-26" },
+        { "name": "accessibility-a11y.md",     "dept": "A11Y",          "interest": "WCAG 2.1 compliance",                        "date": "2026-06-27" },
+        { "name": "animation-motion.md",       "dept": "Motion",        "interest": "Micro-interactions & transitions",           "date": "2026-06-28" },
+        { "name": "dark-mode.md",              "dept": "Theming",       "interest": "Dark/light mode patterns",                   "date": "2026-06-29" },
+        { "name": "icon-system.md",            "dept": "Icons",         "interest": "SVG icon management",                        "date": "2026-06-30" },
+        { "name": "typography-scale.md",       "dept": "Typography",    "interest": "Fluid type scale system",                    "date": "2026-07-01" }
       ]
     },
     {
@@ -78,13 +78,13 @@
       "sidebarEmphasis": null,
       "count": 7,
       "members": [
-        { "name": "pandas-analysis.md",        "dept": "Pandas",        "interest": "Data analysis & manipulation" },
-        { "name": "sql-optimization.md",       "dept": "SQL",           "interest": "Query optimization patterns" },
-        { "name": "ml-pipeline.md",            "dept": "ML",            "interest": "Machine learning pipeline" },
-        { "name": "llm-prompt.md",             "dept": "LLM",           "interest": "Prompt engineering patterns" },
-        { "name": "data-viz.md",               "dept": "Visualization", "interest": "Chart & dashboard creation" },
-        { "name": "etl-workflow.md",           "dept": "ETL",           "interest": "Data pipeline orchestration" },
-        { "name": "vector-db.md",              "dept": "VectorDB",      "interest": "Embedding & retrieval" }
+        { "name": "pandas-analysis.md",        "dept": "Pandas",        "interest": "Data analysis & manipulation",               "date": "2026-07-02" },
+        { "name": "sql-optimization.md",       "dept": "SQL",           "interest": "Query optimization patterns",                "date": "2026-07-03" },
+        { "name": "ml-pipeline.md",            "dept": "ML",            "interest": "Machine learning pipeline",                  "date": "2026-06-05" },
+        { "name": "llm-prompt.md",             "dept": "LLM",           "interest": "Prompt engineering patterns",                "date": "2026-06-08" },
+        { "name": "data-viz.md",               "dept": "Visualization", "interest": "Chart & dashboard creation",                 "date": "2026-06-12" },
+        { "name": "etl-workflow.md",           "dept": "ETL",           "interest": "Data pipeline orchestration",                "date": "2026-06-15" },
+        { "name": "vector-db.md",              "dept": "VectorDB",      "interest": "Embedding & retrieval",                      "date": "2026-06-20" }
       ]
     },
     {
@@ -95,11 +95,11 @@
       "sidebarEmphasis": null,
       "count": 5,
       "members": [
-        { "name": "api-docs.md",               "dept": "API Docs",      "interest": "OpenAPI & endpoint documentation" },
-        { "name": "readme-template.md",        "dept": "README",        "interest": "Project README patterns" },
-        { "name": "changelog-semver.md",       "dept": "Changelog",     "interest": "Semantic versioning changelog" },
-        { "name": "tutorial-guide.md",         "dept": "Tutorial",      "interest": "Step-by-step guide writing" },
-        { "name": "code-comments.md",          "dept": "Comments",      "interest": "JSDoc & inline documentation" }
+        { "name": "api-docs.md",               "dept": "API Docs",      "interest": "OpenAPI & endpoint documentation",           "date": "2026-06-02" },
+        { "name": "readme-template.md",        "dept": "README",        "interest": "Project README patterns",                    "date": "2026-06-10" },
+        { "name": "changelog-semver.md",       "dept": "Changelog",     "interest": "Semantic versioning changelog",              "date": "2026-06-18" },
+        { "name": "tutorial-guide.md",         "dept": "Tutorial",      "interest": "Step-by-step guide writing",                 "date": "2026-06-25" },
+        { "name": "code-comments.md",          "dept": "Comments",      "interest": "JSDoc & inline documentation",               "date": "2026-07-01" }
       ]
     },
     {
@@ -110,13 +110,13 @@
       "sidebarEmphasis": null,
       "count": 7,
       "members": [
-        { "name": "git-workflow.md",           "dept": "Git",           "interest": "Branching & commit strategy" },
-        { "name": "code-review.md",            "dept": "Review",        "interest": "PR review checklist" },
-        { "name": "testing-tdd.md",            "dept": "Testing",       "interest": "Test-driven development" },
-        { "name": "debugging-expert.md",       "dept": "Debug",         "interest": "Systematic debugging approach" },
-        { "name": "refactoring.md",            "dept": "Refactor",      "interest": "Code refactoring patterns" },
-        { "name": "monorepo-setup.md",         "dept": "Monorepo",      "interest": "Turborepo & workspace setup" },
-        { "name": "performance-audit.md",      "dept": "Performance",   "interest": "Lighthouse & web vitals" }
+        { "name": "git-workflow.md",           "dept": "Git",           "interest": "Branching & commit strategy",                "date": "2026-06-03" },
+        { "name": "code-review.md",            "dept": "Review",        "interest": "PR review checklist",                        "date": "2026-06-09" },
+        { "name": "testing-tdd.md",            "dept": "Testing",       "interest": "Test-driven development",                    "date": "2026-06-14" },
+        { "name": "debugging-expert.md",       "dept": "Debug",         "interest": "Systematic debugging approach",              "date": "2026-06-19" },
+        { "name": "refactoring.md",            "dept": "Refactor",      "interest": "Code refactoring patterns",                  "date": "2026-06-23" },
+        { "name": "monorepo-setup.md",         "dept": "Monorepo",      "interest": "Turborepo & workspace setup",                "date": "2026-06-27" },
+        { "name": "performance-audit.md",      "dept": "Performance",   "interest": "Lighthouse & web vitals",                    "date": "2026-07-02" }
       ]
     }
   ]

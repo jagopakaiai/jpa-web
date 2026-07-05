@@ -1,6 +1,7 @@
 ---
 title: "Shadcn/UI Component Library"
 slug: "shadcn-ui-components"
+date: 2026-06-22
 category: "Frontend"
 framework: "React + Shadcn/UI"
 description: "DESIGN.MD untuk project React yang menggunakan shadcn/ui — component patterns, variant system, dan theming guidelines."

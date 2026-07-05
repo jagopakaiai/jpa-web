@@ -49,6 +49,54 @@ module.exports = (eleventy) => {
     });
   });
 
+  // Combined directory collection — merges skills, designs, MCPs sorted by date
+  eleventy.addCollection("directory", (collectionApi) => {
+    var items = [];
+
+    // Flatten skills from skillsData.json
+    var fs = require("fs");
+    var path = require("path");
+    var skillsRaw = JSON.parse(fs.readFileSync(path.join(__dirname, "content", "skillsData.json"), "utf8"));
+    skillsRaw.colleges.forEach(function (college) {
+      college.members.forEach(function (m) {
+        items.push({
+          title: m.name.replace(/\.md$/, "").replace(/-/g, " "),
+          category: college.sidebarLabel,
+          description: m.interest,
+          type: "skill",
+          date: m.date ? new Date(m.date) : new Date("2026-06-01")
+        });
+      });
+    });
+
+    // Add designs
+    collectionApi.getFilteredByGlob("src/designs/*.md").forEach(function (d) {
+      items.push({
+        title: d.data.title,
+        category: d.data.category,
+        description: d.data.description,
+        type: "design",
+        date: d.data.date ? new Date(d.data.date) : new Date("2026-06-01")
+      });
+    });
+
+    // Add MCPs
+    collectionApi.getFilteredByGlob("src/mcps/*.md").forEach(function (m) {
+      items.push({
+        title: m.data.title,
+        category: m.data.category,
+        description: m.data.description,
+        type: "mcp",
+        date: m.data.date ? new Date(m.data.date) : new Date("2026-06-01")
+      });
+    });
+
+    // Sort by date descending (newest first)
+    items.sort(function (a, b) { return b.date - a.date; });
+
+    return items;
+  });
+
   eleventy.setNunjucksEnvironmentOptions({ autoescape: false });
 
   return {

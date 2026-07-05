@@ -25,22 +25,11 @@
       ]
     },
     {
-      "type": "faculty-bar",
-      "label": "SKILL.MD DIRECTORY",
-      "dotLabel": "Skill Directory",
-      "total": 50,
-      "barAriaLabel": "Distribusi Skill.MD per kategori",
-      "segments": [
-        { "variant": null,   "count": 15, "title": "Coding: 15",     "ariaLabel": "Coding 15 files" },
-        { "variant": "alt1", "count": 8,  "title": "DevOps: 8",      "ariaLabel": "DevOps 8 files" },
-        { "variant": "alt2", "count": 8,  "title": "Design: 8",      "ariaLabel": "Design 8 files" },
-        { "variant": "alt3", "count": 7,  "title": "Data & AI: 7",   "ariaLabel": "Data & AI 7 files" },
-        { "variant": "alt4", "count": 5,  "title": "Writing: 5",     "ariaLabel": "Writing 5 files" },
-        { "variant": "alt5", "count": 7,  "title": "Workflow: 7",    "ariaLabel": "Workflow 7 files" }
-      ],
-      "legend": ["CODING", "DEVOPS", "DESIGN", "DATA", "WORKFLOW"],
+      "type": "directory-carousel",
+      "label": "DIREKTORI",
+      "dotLabel": "Direktori",
       "cta": {
-        "text": "LIHAT SEMUA 50+ SKILL.MD",
+        "text": "LIHAT SEMUA SKILL.MD",
         "href": "skills.html"
       }
     },

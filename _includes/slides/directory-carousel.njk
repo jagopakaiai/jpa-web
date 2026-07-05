@@ -1,0 +1,31 @@
+          <div class="tile-label slide__label">{{ slide.label | h }}</div>
+          <div class="slide__body slide__body--directory">
+
+            {# ── Filter Tabs ── #}
+            <div class="directory-tabs" role="tablist" aria-label="Filter directory items">
+              <button class="directory-tab directory-tab--active" role="tab" aria-selected="true" data-filter="all">SEMUA</button>
+              <button class="directory-tab" role="tab" aria-selected="false" data-filter="skill">SKILL</button>
+              <button class="directory-tab" role="tab" aria-selected="false" data-filter="design">DESIGN</button>
+              <button class="directory-tab" role="tab" aria-selected="false" data-filter="mcp">MCP</button>
+            </div>
+
+            {# ── Directory Items (all rendered, filtered by JS) ── #}
+            <div class="directory-items">
+              {%- for item in collections.directory %}
+              <div class="directory-item" data-type="{{ item.type }}">
+                <div class="directory-item__header">
+                  <span class="directory-item__badge directory-item__badge--{{ item.type }}">{{ item.type | upper }}</span>
+                  <span class="directory-item__category">{{ item.category | h }}</span>
+                </div>
+                <div class="directory-item__title">{{ item.title | h }}</div>
+                <div class="directory-item__desc">{{ item.description | h }}</div>
+              </div>
+              {%- endfor %}
+            </div>
+
+            {# ── CTA ── #}
+            <a href="{{ slide.cta.href }}" class="arrow-pill">
+              <span>{{ slide.cta.text | h }}</span>
+              <span class="arrow-pill__arrow">→</span>
+            </a>
+          </div>
