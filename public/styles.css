@@ -1446,6 +1446,55 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 .footer-links a:hover { color: var(--text-display); }
 
+/* --- Blog slider all CTA link --- */
+.blog-all-cta {
+  font-family: 'Space Mono', monospace;
+  font-size: var(--label);
+  letter-spacing: 0.06em;
+  color: var(--text-secondary);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 150ms var(--ease);
+}
+.blog-all-cta:hover {
+  color: var(--text-display);
+}
+
+/* Override translated buttons on smaller/shorter screens to prevent clipping */
+@media (max-width: 1200px) or (max-height: 850px) {
+  .slide .arrow-pill,
+  .slide .btn-primary {
+    transform: none !important;
+    position: static !important;
+    margin-top: auto !important;
+    align-self: flex-end !important;
+  }
+}
+
+/* ============================================================
+   RESPONSIVE: SHORT OR NARROW DESKTOP
+   Ensures bento cards don't squish and overlap text
+   ============================================================ */
+@media (min-width: 1201px) and (max-height: 850px) {
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .bento-grid {
+    grid-template-rows: auto;
+  }
+
+  .spotlight, .tile-hero, .tile-event {
+    min-height: 360px;
+  }
+
+  .spotlight--showcase,
+  .spotlight--directory {
+    min-height: 420px;
+  }
+}
+
 /* ============================================================
    RESPONSIVE: TABLET (769-1200px)
    Stacks to 2 columns. Rotations still run.
