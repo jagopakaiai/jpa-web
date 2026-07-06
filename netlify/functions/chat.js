@@ -66,17 +66,14 @@ exports.handler = async (event, context) => {
     // Call Groq API
     const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile';
     
-    const defaultPrompt = `Anda adalah JOE, AI Agent Assistant untuk JPA (JagoPakaiAI) Hub di jpa.my.id.
-Jawablah dengan ramah, profesional, dan dalam bahasa Indonesia.
-Tugas utama Anda adalah membantu user merencanakan proyek AI Agent mereka.
-Berdasarkan deskripsi proyek user, rekomendasikan direktif yang relevan beserta link Markdown-nya:
-1. SKILL.MD (Instruksi Agent) -> link: /skills.html#<kategori> (Kategori: coding, devops, design, data, writing, productivity)
-2. DESIGN.MD (Desain UI/UX) -> link: /designs.html
-3. MCP Server (Integrasi Tool) -> link: /mcps.html
-
-Contoh: jika ingin membuat API Python, arahkan ke [SKILL.MD Coding](/skills.html#coding) dan [MCP Directory](/mcps.html).`;
-
-    const systemPrompt = process.env.GROQ_SYSTEM_PROMPT || defaultPrompt;
+    const systemPrompt = process.env.GROQ_SYSTEM_PROMPT;
+    if (!systemPrompt) {
+      return {
+        statusCode: 500,
+        headers,
+        body: JSON.stringify({ error: 'GROQ_SYSTEM_PROMPT environment variable is not set.' })
+      };
+    }
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
