@@ -105,9 +105,9 @@
           var data = await response.json();
           var reply = data.choices[0].message.content;
           
-          // Remove loading and show actual reply
+          // Remove loading and type out the reply
           removeLoadingMessage(loadingId);
-          appendMessage('assistant', reply);
+          typeMessage(reply);
           chatHistory.push({ role: 'assistant', content: reply });
         } catch (err) {
           console.warn('Netlify function failed:', err);
@@ -116,6 +116,13 @@
         }
       });
 
+      function formatMarkdown(text) {
+        return text
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.*?)\*/g, '<em>$1</em>')
+          .replace(/\n/g, '<br>');
+      }
+
       function appendMessage(sender, text, isLoading = false) {
         var msg = document.createElement('div');
         msg.className = 'joe-message joe-message--' + sender;
@@ -123,16 +130,32 @@
           msg.id = 'loading-' + Date.now();
           msg.innerHTML = '<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>';
         } else {
-          // Simple markdown-to-HTML formatting for bold and line breaks
-          var formatted = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')
-            .replace(/\n/g, '<br>');
-          msg.innerHTML = formatted;
+          msg.innerHTML = formatMarkdown(text);
         }
         msgsContainer.appendChild(msg);
         msgsContainer.scrollTop = msgsContainer.scrollHeight;
         return msg.id;
+      }
+
+      function typeMessage(text) {
+        var msg = document.createElement('div');
+        msg.className = 'joe-message joe-message--assistant';
+        msg.innerHTML = '';
+        msgsContainer.appendChild(msg);
+        var i = 0;
+        var speed = 12; // ms per character — fast typing
+        var chunk = 3;  // characters per tick for extra speed
+        function tick() {
+          if (i < text.length) {
+            var end = Math.min(i + chunk, text.length);
+            var partial = text.substring(0, end);
+            msg.innerHTML = formatMarkdown(partial);
+            i = end;
+            msgsContainer.scrollTop = msgsContainer.scrollHeight;
+            requestAnimationFrame(function() { setTimeout(tick, speed); });
+          }
+        }
+        tick();
       }
 
       function removeLoadingMessage(id) {
