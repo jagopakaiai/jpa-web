@@ -93,12 +93,15 @@
         var loadingId = appendMessage('assistant', '...', true);
 
         try {
+          // Attempt Netlify function first (ideal for production / Netlify Dev local CLI)
           var response = await fetch('/.netlify/functions/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ messages: chatHistory })
           });
-          if (!response.ok) throw new Error('Response error');
+          
+          if (!response.ok) throw new Error('Netlify function not available');
+          
           var data = await response.json();
           var reply = data.choices[0].message.content;
           
@@ -107,30 +110,93 @@
           appendMessage('assistant', reply);
           chatHistory.push({ role: 'assistant', content: reply });
         } catch (err) {
-          console.warn('Netlify function error, falling back to local simulation:', err);
-          setTimeout(function() {
+          console.warn('Netlify function failed, falling back to client-side direct Groq query:', err);
+          
+          var localKey = localStorage.getItem('groq-api-key');
+          if (!localKey) {
             removeLoadingMessage(loadingId);
-            var replies = [
-              "Halo! Saya **JOE**, AI Agent Assistant Anda. Saya siap membantu menjawab pertanyaan seputar JPA Hub (jpa.my.id)!",
-              "JPA Hub menyediakan berbagai direktif seperti **SKILL.MD** (panduan instruksi agent), **DESIGN.MD** (pola desain UI/UX), dan **MCP Server** untuk mengintegrasikan tool eksternal ke AI Agent Anda.",
-              "Anda bisa mencari skill.md yang tersedia menggunakan tab pencarian di section **Direktori** di sebelah kiri!",
-              "Untuk mengaktifkan JOE secara langsung menggunakan Groq API, pastikan Anda men-deploy ke Netlify dan menyetel environment variable `GROQ_API_KEY`."
-            ];
-            // Pick a reply based on user question keywords
-            var userText = text.toLowerCase();
-            var reply = replies[0];
-            if (userText.includes('skill') || userText.includes('direktif') || userText.includes('panduan')) {
-              reply = replies[1];
-            } else if (userText.includes('cari') || userText.includes('temukan') || userText.includes('search')) {
-              reply = replies[2];
-            } else if (userText.includes('api') || userText.includes('groq') || userText.includes('config') || userText.includes('setup')) {
-              reply = replies[3];
+            appendMessage('assistant', 'Gagal menghubungi serverless function. Untuk menggunakan chat JOE secara realtime di localhost, silakan masukkan Groq API Key Anda (disimpan aman di browser Anda):');
+            appendInlineApiKeyInput();
+            return;
+          }
+
+          // Directly call Groq API from client-side
+          try {
+            var directResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localKey
+              },
+              body: JSON.stringify({
+                model: 'llama-3.3-70b-versatile',
+                messages: [
+                  {
+                    role: 'system',
+                    content: `Anda adalah JOE, AI Agent Assistant untuk JPA (JagoPakaiAI) Hub di jpa.my.id.
+Jawablah dengan ramah, profesional, dan dalam bahasa Indonesia.
+Bantu user merencanakan proyek AI Agent mereka dengan memberikan rekomendasi link direktif yang relevan (SKILL.MD, DESIGN.MD, MCP Server).
+Gunakan format Markdown link berikut secara akurat:
+- SKILL.MD: /skills.html#<kategori> (kategori: coding, devops, design, data, writing, productivity)
+- DESIGN.MD: /designs.html
+- MCP Server: /mcps.html`
+                  },
+                  ...chatHistory
+                ]
+              })
+            });
+
+            if (!directResponse.ok) {
+              if (directResponse.status === 401) {
+                localStorage.removeItem('groq-api-key');
+                throw new Error('API Key tidak valid (401). Silakan coba kirim ulang pesan untuk memasukkan key baru.');
+              }
+              throw new Error('Groq API Error: ' + directResponse.status);
             }
+
+            var directData = await directResponse.json();
+            var reply = directData.choices[0].message.content;
+
+            removeLoadingMessage(loadingId);
             appendMessage('assistant', reply);
             chatHistory.push({ role: 'assistant', content: reply });
-          }, 800);
+          } catch (directErr) {
+            removeLoadingMessage(loadingId);
+            appendMessage('assistant', 'Gagal memanggil Groq: ' + directErr.message);
+          }
         }
       });
+
+      function appendInlineApiKeyInput() {
+        var container = document.createElement('div');
+        container.className = 'joe-message joe-message--assistant';
+        container.style.cssText = 'display: flex; flex-direction: column; gap: 8px; width: 85%; margin-top: 4px; box-sizing: border-box;';
+
+        var keyInput = document.createElement('input');
+        keyInput.type = 'password';
+        keyInput.placeholder = 'gsk_...';
+        keyInput.style.cssText = 'width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #E4E4E7; font-size: 12px; background: #FFFFFF; color: #18181B; box-sizing: border-box;';
+
+        var saveBtn = document.createElement('button');
+        saveBtn.textContent = 'Simpan API Key';
+        saveBtn.style.cssText = 'padding: 8px 12px; background: #18181B; color: #FFFFFF; border: none; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; transition: opacity 150ms ease;';
+        saveBtn.addEventListener('mouseover', function() { saveBtn.style.opacity = '0.9'; });
+        saveBtn.addEventListener('mouseout', function() { saveBtn.style.opacity = '1'; });
+
+        saveBtn.addEventListener('click', function() {
+          var val = keyInput.value.trim();
+          if (val) {
+            localStorage.setItem('groq-api-key', val);
+            container.remove();
+            appendMessage('assistant', 'API Key tersimpan! Silakan ketik pesan Anda kembali untuk memulai chat.');
+          }
+        });
+
+        container.appendChild(keyInput);
+        container.appendChild(saveBtn);
+        msgsContainer.appendChild(container);
+        msgsContainer.scrollTop = msgsContainer.scrollHeight;
+      }
 
       function appendMessage(sender, text, isLoading = false) {
         var msg = document.createElement('div');
