@@ -1,5 +1,4 @@
 // Netlify Serverless Function for JOE AI Chat Assistant using Groq API
-const fetch = require('node-fetch'); // Fallback for environments without global fetch
 const fs = require('fs');
 const path = require('path');
 
