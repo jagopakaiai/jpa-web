@@ -14,5 +14,148 @@
 </head>
 <body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
 {% block body %}{% endblock %}
+  <!-- JOE AI Agent Chat Trigger Button (Global Floating) -->
+  <button id="joeChatTrigger" class="joe-chat-trigger" type="button" aria-label="Chat dengan JOE AI Agent">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </button>
+
+  <!-- JOE AI Chat Dialog Window (Popup on the Left) -->
+  <div id="joeChatWindow" class="joe-chat-window" style="display: none;">
+    <div class="joe-chat-header">
+      <div style="display: flex; align-items: center; gap: var(--space-sm);">
+        <div class="joe-avatar">JOE</div>
+        <div>
+          <div class="joe-name">JOE</div>
+          <div class="joe-status">AI Agent Assistant</div>
+        </div>
+      </div>
+      <button id="joeChatClose" class="joe-chat-close" type="button" aria-label="Tutup chat">&times;</button>
+    </div>
+    
+    <div id="joeChatMessages" class="joe-chat-messages">
+      <div class="joe-message joe-message--assistant">
+        Halo! Saya <strong>JOE</strong>, AI Agent Assistant untuk JagoPakaiAI. Ada yang bisa saya bantu?
+      </div>
+    </div>
+    
+    <form id="joeChatForm" class="joe-chat-form">
+      <input type="text" id="joeChatInput" placeholder="Tanya JOE..." required autocomplete="off">
+      <button type="submit" aria-label="Kirim pesan">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="22" y1="2" x2="11" y2="13"></line>
+          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    (function() {
+      var trigger = document.getElementById('joeChatTrigger');
+      var win = document.getElementById('joeChatWindow');
+      var closeBtn = document.getElementById('joeChatClose');
+      var form = document.getElementById('joeChatForm');
+      var input = document.getElementById('joeChatInput');
+      var msgsContainer = document.getElementById('joeChatMessages');
+      var chatHistory = [];
+
+      trigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (win.style.display === 'none') {
+          win.style.display = 'flex';
+          input.focus();
+        } else {
+          win.style.display = 'none';
+        }
+      });
+
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        win.style.display = 'none';
+      });
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var text = input.value.trim();
+        if (!text) return;
+
+        // Add user message
+        appendMessage('user', text);
+        input.value = '';
+        chatHistory.push({ role: 'user', content: text });
+
+        // Add loading message
+        var loadingId = appendMessage('assistant', '...', true);
+
+        try {
+          var response = await fetch('/.netlify/functions/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: chatHistory })
+          });
+          if (!response.ok) throw new Error('Response error');
+          var data = await response.json();
+          var reply = data.choices[0].message.content;
+          
+          // Remove loading and show actual reply
+          removeLoadingMessage(loadingId);
+          appendMessage('assistant', reply);
+          chatHistory.push({ role: 'assistant', content: reply });
+        } catch (err) {
+          console.warn('Netlify function error, falling back to local simulation:', err);
+          setTimeout(function() {
+            removeLoadingMessage(loadingId);
+            var replies = [
+              "Halo! Saya **JOE**, AI Agent Assistant Anda. Saya siap membantu menjawab pertanyaan seputar JPA Hub (jpa.my.id)!",
+              "JPA Hub menyediakan berbagai direktif seperti **SKILL.MD** (panduan instruksi agent), **DESIGN.MD** (pola desain UI/UX), dan **MCP Server** untuk mengintegrasikan tool eksternal ke AI Agent Anda.",
+              "Anda bisa mencari skill.md yang tersedia menggunakan tab pencarian di section **Direktori** di sebelah kiri!",
+              "Untuk mengaktifkan JOE secara langsung menggunakan Groq API, pastikan Anda men-deploy ke Netlify dan menyetel environment variable `GROQ_API_KEY`."
+            ];
+            // Pick a reply based on user question keywords
+            var userText = text.toLowerCase();
+            var reply = replies[0];
+            if (userText.includes('skill') || userText.includes('direktif') || userText.includes('panduan')) {
+              reply = replies[1];
+            } else if (userText.includes('cari') || userText.includes('temukan') || userText.includes('search')) {
+              reply = replies[2];
+            } else if (userText.includes('api') || userText.includes('groq') || userText.includes('config') || userText.includes('setup')) {
+              reply = replies[3];
+            }
+            appendMessage('assistant', reply);
+            chatHistory.push({ role: 'assistant', content: reply });
+          }, 800);
+        }
+      });
+
+      function appendMessage(sender, text, isLoading = false) {
+        var msg = document.createElement('div');
+        msg.className = 'joe-message joe-message--' + sender;
+        if (isLoading) {
+          msg.id = 'loading-' + Date.now();
+          msg.innerHTML = '<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>';
+        } else {
+          // Simple markdown-to-HTML formatting for bold and line breaks
+          var formatted = text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/\n/g, '<br>');
+          msg.innerHTML = formatted;
+        }
+        msgsContainer.appendChild(msg);
+        msgsContainer.scrollTop = msgsContainer.scrollHeight;
+        return msg.id;
+      }
+
+      function removeLoadingMessage(id) {
+        var el = document.getElementById(id);
+        if (el) el.remove();
+      }
+    })();
+  </script>
 </body>
 </html>

@@ -1196,6 +1196,12 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 
 .touch-cta { align-self: flex-end; margin-top: auto; }
 
+/* Shift touchpoint slide action buttons left to clear the global floating chat icon */
+.slide__body--touch .touch-cta,
+.slide__body--touch .arrow-pill {
+  margin-right: 64px !important;
+}
+
 /* Touchpoint decorations: pixel-art SVG accents that fill the tile's middle space */
 .touch-decoration {
   display: flex;
@@ -1421,6 +1427,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   justify-content: space-between;
   align-items: center;
   gap: var(--space-md);
+  padding-right: 80px; /* clear the floating chat trigger on desktop */
+  box-sizing: border-box;
 }
 
 .footer-clusters, .footer-copy, .footer-institution {
@@ -1460,6 +1468,41 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   color: var(--text-display);
 }
 
+/* --- Touchpoint slide social links row --- */
+.touch-social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.touch-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  transition: all 150ms var(--ease);
+  box-sizing: border-box;
+}
+
+.touch-social-icon:hover {
+  background: var(--border);
+  transform: translateY(-2px);
+  color: var(--text-display);
+}
+
+.touch-social-icon svg {
+  width: 36px;
+  height: 36px;
+  fill: currentColor;
+}
+
 /* Override translated buttons on tablet and mobile to sit naturally */
 @media (max-width: 1200px) {
   .slide .arrow-pill,
@@ -1481,6 +1524,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     --space-lg: clamp(12px, 1.8vh, 24px);   /* Pad tiles less */
     --space-md: clamp(8px, 1.2vh, 16px);    /* Smaller gaps between elements */
     --space-sm: clamp(4px, 0.8vh, 8px);     /* Smaller inner margins */
+    --space-xl: clamp(16px, 2.4vh, 32px);   /* Smaller hero padding/gaps */
+    --space-2xl: clamp(24px, 3.6vh, 48px);  /* Smaller section scaling */
     --tile-gap: clamp(4px, 0.8vh, 8px);     /* Smaller grid gaps */
     --grid-padding: clamp(4px, 0.8vh, 8px); /* Smaller grid padding */
   }
@@ -1516,6 +1561,78 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   .directory-search-wrapper input {
     padding: 5px 10px !important;
     font-size: 11px !important;
+  }
+
+  /* Scale down social icon buttons */
+  .touch-social-links {
+    gap: 10px !important;
+    margin-top: 16px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .touch-social-icon {
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 10px !important;
+  }
+  .touch-social-icon svg {
+    width: 29px !important;
+    height: 29px !important;
+  }
+
+  /* Scale down JPA CLI card interior spacing */
+  .tile-install {
+    padding: var(--space-md) !important;
+  }
+
+  .tile-install .tile-event__date {
+    margin-bottom: 2px !important;
+    line-height: 1.1 !important;
+  }
+
+  .tile-install .install-code-text {
+    font-size: 11px !important;
+  }
+
+  .tile-install p {
+    margin-bottom: var(--space-sm) !important;
+    min-height: auto !important;
+  }
+
+  .tile-install .install-tabs {
+    margin-bottom: var(--space-xs) !important;
+    padding-bottom: 3px !important;
+  }
+
+  .tile-install .install-tab {
+    padding-bottom: 3px !important;
+  }
+
+  .tile-install .install-commands-wrapper {
+    margin-bottom: var(--space-sm) !important;
+    min-height: auto !important;
+  }
+
+  .tile-install .install-code-box {
+    padding: 5px var(--space-sm) !important;
+  }
+
+  .tile-install .tile-install__sponsors-wrapper {
+    margin-bottom: var(--space-sm) !important;
+  }
+
+  .tile-install .tile-event__sponsors {
+    margin-bottom: 2px !important;
+  }
+
+  .tile-install .tile-install__tags-list {
+    gap: 3px !important;
+  }
+
+  .tile-install .tile-install__tags-list span {
+    padding: 1px 4px !important;
+    font-size: 10px !important;
+    border-radius: 3px !important;
   }
 }
 
@@ -1620,11 +1737,12 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
     gap: var(--space-xs);
     padding: var(--space-sm) 0;
     text-align: center;
+    padding-right: 0 !important; /* reset desktop right padding on small screens */
   }
 
   .site-footer {
     height: auto;
-    padding: var(--space-sm) var(--grid-padding);
+    padding: var(--space-sm) var(--grid-padding) 76px var(--grid-padding); /* extra bottom padding to clear the chat button */
   }
 }
 
@@ -1864,5 +1982,272 @@ button:focus-visible,
   color: var(--text-display);
 }
 
+
+/* --- JOE AI Chat Widget (Global Floating Popup on the Right) --- */
+.joe-chat-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  left: auto !important;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--text-display); /* White in dark mode, black in light mode */
+  color: var(--surface); /* Dark in dark mode, light in light mode */
+  border: 2px solid transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  z-index: 99999;
+  box-sizing: border-box;
+  transition: transform 200ms var(--ease), border-color 200ms var(--ease), background-color 200ms var(--ease), color 200ms var(--ease);
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.joe-chat-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  border: 2px solid var(--text-display);
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  box-sizing: border-box;
+  animation: radar 2s infinite ease-out;
+}
+
+.joe-chat-trigger:hover {
+  animation: none;
+  transform: translateY(-8px) scale(1.08);
+  border-color: var(--accent) !important; /* Purple only on the line/border when hovered */
+}
+
+.joe-chat-trigger:hover::before {
+  animation: none;
+  opacity: 0;
+}
+
+.joe-chat-trigger svg {
+  width: 24px;
+  height: 24px;
+  stroke: currentColor;
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  }
+  50% {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* Radar Glowing Animation */
+@keyframes radar {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Standalone Chat Window (Popup on the Right) - Always White */
+.joe-chat-window {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  left: auto !important;
+  width: 360px;
+  height: 500px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vh - 130px);
+  background: #FFFFFF !important; /* Pure white background in all modes */
+  color: #18181B !important; /* Dark text */
+  border: 1px solid #E4E4E7 !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  z-index: 99999;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.joe-chat-header {
+  padding: 12px 16px;
+  background: #F4F4F5 !important; /* Clean light gray header */
+  border-bottom: 1px solid #E4E4E7 !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.joe-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #18181B !important; /* Dark avatar background */
+  color: #FFFFFF !important; /* White text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.joe-name {
+  font-family: 'Space Mono', monospace;
+  font-weight: bold;
+  font-size: 13px;
+  color: #18181B !important; /* Dark text */
+}
+
+.joe-status {
+  font-size: 10px;
+  color: #71717A !important; /* Muted gray text */
+}
+
+.joe-chat-close {
+  background: none;
+  border: none;
+  color: #71717A !important;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 150ms var(--ease);
+}
+
+.joe-chat-close:hover {
+  color: #18181B !important;
+}
+
+.joe-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #FFFFFF !important;
+}
+
+.joe-message {
+  padding: 10px 14px;
+  border-radius: 10px;
+  max-width: 85%;
+  font-size: 13px;
+  line-height: 1.45;
+  word-break: break-word;
+  text-align: left;
+}
+
+.joe-message--assistant {
+  background: #F4F4F5 !important; /* Clean light gray bubble */
+  color: #18181B !important; /* Dark text inside */
+  align-self: flex-start;
+  border-top-left-radius: 2px;
+  border: 1px solid #E4E4E7 !important;
+}
+
+.joe-message--user {
+  background: #18181B !important; /* Dark bubble */
+  color: #FFFFFF !important; /* White text inside */
+  align-self: flex-end;
+  border-top-right-radius: 2px;
+}
+
+.joe-chat-form {
+  padding: 12px;
+  background: #F4F4F5 !important; /* Clean light gray form bottom */
+  border-top: 1px solid #E4E4E7 !important;
+  display: flex;
+  gap: 8px;
+}
+
+.joe-chat-form input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #E4E4E7 !important;
+  background: #FFFFFF !important; /* White input background */
+  color: #18181B !important; /* Dark input text */
+  font-size: 13px;
+}
+
+.joe-chat-form input:focus {
+  outline: none;
+  border-color: #18181B !important; /* Dark border on focus */
+}
+
+.joe-chat-form button {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  border: none;
+  background: #18181B !important; /* Dark button */
+  color: #FFFFFF !important; /* White icon */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms var(--ease);
+}
+
+.joe-chat-form button:hover {
+  background: #3F3F46 !important; /* Hover dark gray */
+}
+
+.joe-chat-form button svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+}
+
+.loading-dots span {
+  animation: blink 1.4s infinite both;
+}
+.loading-dots span:nth-child(2) {
+  animation-delay: .2s;
+}
+.loading-dots span:nth-child(3) {
+  animation-delay: .4s;
+}
+@keyframes blink {
+  0% { opacity: .2; }
+  20% { opacity: 1; }
+  100% { opacity: .2; }
+}
+
+/* Adjust size on short screens */
+@media (max-width: 768px) {
+  .joe-chat-trigger {
+    bottom: 16px;
+    right: 16px;
+    left: auto !important;
+    width: 46px;
+    height: 46px;
+  }
+  .joe-chat-window {
+    bottom: 74px;
+    right: 16px;
+    left: auto !important;
+    width: calc(100vw - 32px);
+    height: calc(100vh - 100px);
+  }
+}
 
 

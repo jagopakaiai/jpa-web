@@ -25,15 +25,15 @@
     },
     {
       "type": "touchpoint",
-      "label": "GITHUB",
-      "dotLabel": "GitHub",
+      "label": "SOCIAL MEDIA",
+      "dotLabel": "Social Media",
       "extraClasses": "slide--touch",
       "primary": {
         "kind": "handle",
         "text": "@jagopakaiai",
         "extraClass": "touch-handle--xl"
       },
-      "decoration": "linkedin",
+      "decoration": "social-links",
       "cta": {
         "kind": "arrow-pill",
         "text": "FOLLOW",
