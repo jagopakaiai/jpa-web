@@ -10,3 +10,8 @@ node_modules/
 # OS / editor
 .DS_Store
 .playwright-mcp/
+
+# Local Environment Secrets
+.env
+.env.local
+.env.*
