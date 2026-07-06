@@ -1460,8 +1460,8 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
   color: var(--text-display);
 }
 
-/* Override translated buttons on smaller/shorter screens to prevent clipping */
-@media (max-width: 1200px) or (max-height: 850px) {
+/* Override translated buttons on tablet and mobile to sit naturally */
+@media (max-width: 1200px) {
   .slide .arrow-pill,
   .slide .btn-primary {
     transform: none !important;
@@ -1472,28 +1472,53 @@ a.tile:active { transform: scale(0.995); transition: transform 100ms var(--ease)
 }
 
 /* ============================================================
-   RESPONSIVE: SHORT OR NARROW DESKTOP
-   Ensures bento cards don't squish and overlap text
+   RESPONSIVE: SHORT DESKTOP (Viewport height <= 850px)
+   Enables fluid sizing of gaps, paddings, and elements so the
+   100vh dashboard fits perfectly without scrollbars.
    ============================================================ */
 @media (min-width: 1201px) and (max-height: 850px) {
-  body {
-    height: auto;
-    overflow-y: auto;
+  :root, [data-theme] {
+    --space-lg: clamp(12px, 1.8vh, 24px);   /* Pad tiles less */
+    --space-md: clamp(8px, 1.2vh, 16px);    /* Smaller gaps between elements */
+    --space-sm: clamp(4px, 0.8vh, 8px);     /* Smaller inner margins */
+    --tile-gap: clamp(4px, 0.8vh, 8px);     /* Smaller grid gaps */
+    --grid-padding: clamp(4px, 0.8vh, 8px); /* Smaller grid padding */
   }
 
-  .bento-grid {
-    grid-template-rows: auto;
+  /* Scale down buttons and control chips */
+  .arrow-pill,
+  .btn-primary {
+    padding: 6px 14px !important;
+  }
+  
+  .spot-btn {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: var(--body) !important;
   }
 
-  .spotlight, .tile-hero, .tile-event {
-    min-height: 360px;
+  .spot-dot {
+    width: 5px !important;
+    height: 5px !important;
   }
 
-  .spotlight--showcase,
-  .spotlight--directory {
-    min-height: 420px;
+  /* Adjust translated buttons alignment for smaller controls */
+  .slide .arrow-pill,
+  .slide .btn-primary {
+    transform: translateY(calc(var(--space-md) + 32px)) !important;
+  }
+
+  /* Scale down Directory tools */
+  .directory-tab {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+  }
+  .directory-search-wrapper input {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
   }
 }
+
 
 /* ============================================================
    RESPONSIVE: TABLET (769-1200px)
