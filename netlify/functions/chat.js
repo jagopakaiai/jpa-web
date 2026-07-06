@@ -1,5 +1,32 @@
 // Netlify Serverless Function for JOE AI Chat Assistant using Groq API
 const fetch = require('node-fetch'); // Fallback for environments without global fetch
+const fs = require('fs');
+const path = require('path');
+
+// Parse local .env file manually if it exists (for local development runner convenience)
+try {
+  const envPath = path.resolve(__dirname, '../../.env');
+  if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf8');
+    envContent.split(/\r?\n/).forEach(line => {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) return;
+      const delimiterIdx = trimmed.indexOf('=');
+      if (delimiterIdx > 0) {
+        const key = trimmed.substring(0, delimiterIdx).trim();
+        let val = trimmed.substring(delimiterIdx + 1).trim();
+        if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+          val = val.substring(1, val.length - 1);
+        }
+        if (key && !process.env[key]) {
+          process.env[key] = val;
+        }
+      }
+    });
+  }
+} catch (err) {
+  console.warn('Could not parse local .env file:', err);
+}
 
 exports.handler = async (event, context) => {
   // Enable CORS
