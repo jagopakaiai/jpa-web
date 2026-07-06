@@ -2217,6 +2217,79 @@ button:focus-visible,
   stroke: currentColor;
 }
 
+/* --- INVERTED THEMING: Dark Chat Window in Light Mode --- */
+[data-theme="light"] .joe-chat-window {
+  background: #111111 !important; /* Dark background */
+  color: #FFFFFF !important; /* White text */
+  border: 1px solid #27272A !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="light"] .joe-chat-header {
+  background: #1A1A1A !important; /* Darker header background */
+  border-bottom: 1px solid #27272A !important;
+}
+
+[data-theme="light"] .joe-avatar {
+  background: #FFFFFF !important; /* White avatar in dark mode */
+  color: #111111 !important; /* Dark text */
+}
+
+[data-theme="light"] .joe-name {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .joe-status {
+  color: #A1A1AA !important;
+}
+
+[data-theme="light"] .joe-chat-close {
+  color: #A1A1AA !important;
+}
+
+[data-theme="light"] .joe-chat-close:hover {
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .joe-chat-messages {
+  background: #111111 !important;
+}
+
+[data-theme="light"] .joe-message--assistant {
+  background: #1A1A1A !important; /* Dark assistant bubble */
+  color: #FFFFFF !important;
+  border-color: #27272A !important;
+}
+
+[data-theme="light"] .joe-message--user {
+  background: #FFFFFF !important; /* White user bubble */
+  color: #111111 !important;
+}
+
+[data-theme="light"] .joe-chat-form {
+  background: #1A1A1A !important;
+  border-top: 1px solid #27272A !important;
+}
+
+[data-theme="light"] .joe-chat-form input {
+  background: #111111 !important;
+  color: #FFFFFF !important;
+  border-color: #27272A !important;
+}
+
+[data-theme="light"] .joe-chat-form input:focus {
+  border-color: #FFFFFF !important;
+}
+
+[data-theme="light"] .joe-chat-form button {
+  background: #FFFFFF !important; /* White button */
+  color: #111111 !important;
+}
+
+[data-theme="light"] .joe-chat-form button:hover {
+  background: #E4E4E7 !important;
+}
+
 .loading-dots span {
   animation: blink 1.4s infinite both;
 }
